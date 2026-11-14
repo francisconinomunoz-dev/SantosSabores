@@ -7,6 +7,22 @@
        ===================================================================== -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <!-- ===================== GOOGLE TAG MANAGER =====================
+       Pega el ID del contenedor en GTM_ID (formato GTM-XXXXXXX).
+       Mientras esté vacío no se carga nada (la web funciona igual).
+       Google Analytics 4, Meta Pixel, etc. se configuran DENTRO de GTM. -->
+  <script>
+    window.SS_GTM_ID = '';
+    window.dataLayer = window.dataLayer || [];
+    if (window.SS_GTM_ID) {
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer',window.SS_GTM_ID);
+    }
+  </script>
+  <!-- ===================== FIN GOOGLE TAG MANAGER ===================== -->
   <!-- Marca "js" lo antes posible para preparar animaciones sin parpadeo -->
   <script>
     document.documentElement.classList.replace('no-js', 'js');
@@ -1479,6 +1495,45 @@
     <span class="wa-ping absolute inset-0 rounded-full bg-[#25D366]"></span>
     <svg class="relative h-8 w-8" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
   </a>
+
+  <!-- ===================== MEDICIÓN DE EVENTOS (dataLayer para GTM / GA4) =====================
+       Eventos que envía la web (crearlos como "Evento personalizado" en GTM):
+       - whatsapp_click     → clic en cualquier botón/enlace de WhatsApp (conversión principal)
+       - phone_click        → clic en "Llamar"
+       - directions_click   → clic en "Cómo llegar" / Google Maps
+       - social_click       → clic en Instagram
+       - outbound_click     → clic en Restaurant Guru u otros sitios
+       - menu_category_view → cambio de pestaña en la carta (parámetro menu_category)
+       - gallery_photo_view → foto ampliada en la galería (parámetro photo)
+       - video_play         → video que empieza a reproducirse (parámetro video)
+       - nav_click          → clic en el menú de navegación (parámetro section)
+       Todos llevan link_location = sección de la página donde ocurrió el clic. -->
+  <script>
+  (() => {
+    const push = (event, params) => { window.dataLayer = window.dataLayer || []; window.dataLayer.push(Object.assign({ event }, params)); };
+    const sectionOf = el => { const s = el.closest('section[id], header, footer, [id="mobileMenu"]'); return s ? (s.id || s.tagName.toLowerCase()) : 'flotante'; };
+    const label = el => (el.getAttribute('aria-label') || el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80);
+    document.addEventListener('click', e => {
+      const a = e.target.closest('a[href]'); if (!a) return;
+      const href = a.getAttribute('href'); const base = { link_location: sectionOf(a), link_text: label(a), link_url: href };
+      if (/wa\.me|whatsapp/i.test(href)) push('whatsapp_click', base);
+      else if (href.startsWith('tel:')) push('phone_click', base);
+      else if (/google\.[a-z.]+\/maps|maps\.google|maps\.app/i.test(href)) push('directions_click', base);
+      else if (/instagram\.com|facebook\.com|tiktok\.com/i.test(href)) push('social_click', base);
+      else if (href.startsWith('#')) push('nav_click', Object.assign(base, { section: href.slice(1) }));
+      else if (/^https?:/i.test(href) && !href.includes(location.hostname)) push('outbound_click', base);
+    }, { capture: true });
+    document.addEventListener('click', e => {
+      const t = e.target.closest('[role="tab"]'); if (t) push('menu_category_view', { menu_category: label(t).replace(/^\d+\s*/, '') });
+      const g = e.target.closest('.lb-open'); if (g) push('gallery_photo_view', { photo: g.dataset.cap || '' });
+    }, { capture: true });
+    document.addEventListener('play', e => {
+      const v = e.target; if (v.tagName !== 'VIDEO' || v.dataset.tracked) return;
+      v.dataset.tracked = '1'; const src = (v.querySelector('source') || {}).src || v.currentSrc || '';
+      push('video_play', { video: src.split('/').pop(), link_location: sectionOf(v) });
+    }, { capture: true });
+  })();
+  </script>
 
   <!-- ===================== SCRIPTS ===================== -->
   <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
