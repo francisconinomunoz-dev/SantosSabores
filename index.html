@@ -1,35 +1,41 @@
 <!doctype html>
-<html lang="es-CO">
+<html lang="es-CO" class="no-js">
 <head>
   <!-- =====================================================================
        SANTOS SABORES · Restaurante Parrilla · El Carmen de Apicalá, Tolima
-       Landing page de un solo archivo: Tailwind CSS (CDN) + Lucide + Google Fonts
+       Landing de un solo archivo: Tailwind CSS (CDN) + GSAP + Lucide + Google Fonts
        ===================================================================== -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <!-- Marca "js" lo antes posible para preparar animaciones sin parpadeo -->
+  <script>
+    document.documentElement.classList.replace('no-js', 'js');
+    // Si GSAP no carga en 3 s, mostramos todo igual (seguridad para SEO/usuarios)
+    setTimeout(function () { if (!window.gsap) document.documentElement.classList.add('no-anim'); }, 3000);
+  </script>
 
   <!-- ===================== SEO BÁSICO ===================== -->
   <title>Santos Sabores | Restaurante Parrilla en El Carmen de Apicalá, Tolima</title>
-  <meta name="description" content="Restaurante y parrilla en El Carmen de Apicalá, Tolima. Abierto todos los días de 12 a 5 p. m.: baby beef a la brasa, mojarra frita, bagre en salsa y cocina colombiana en un salón de guadua. Pet friendly y parqueadero." />
-  <meta name="keywords" content="restaurante Carmen de Apicalá, parrilla Carmen de Apicalá, dónde comer en Carmen de Apicalá, restaurante Tolima, mojarra frita, bagre en salsa, baby beef, almuerzo Carmen de Apicalá, domicilios Carmen de Apicalá, Santos Sabores" />
+  <meta name="description" content="Restaurante parrilla en El Carmen de Apicalá, Tolima. Abierto todos los días de 12 a 5 p. m.: baby beef al carbón, mojarra frita, bagre en salsa, bandeja paisa y sancocho. Domicilios, pet friendly y parqueadero." />
+  <meta name="keywords" content="restaurante Carmen de Apicalá, parrilla Carmen de Apicalá, dónde comer en Carmen de Apicalá, almuerzo Carmen de Apicalá, domicilios Carmen de Apicalá, restaurante Tolima, mojarra frita, bagre en salsa, baby beef, bandeja paisa, Santos Sabores" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Santos Sabores" />
-  <meta name="theme-color" content="#1F3A2E" />
-  <!-- Cambia la URL canónica si publicas en un dominio propio (ej. https://santossabores.co/) -->
+  <meta name="theme-color" content="#0B0F0D" />
+  <meta name="color-scheme" content="dark" />
   <link rel="canonical" href="https://francisconinomunoz-dev.github.io/SantosSabores/" />
 
-  <!-- SEO local (geo) -->
+  <!-- SEO local -->
   <meta name="geo.region" content="CO-TOL" />
   <meta name="geo.placename" content="Carmen de Apicalá, Tolima" />
   <meta name="geo.position" content="4.1503;-74.7186" />
   <meta name="ICBM" content="4.1503, -74.7186" />
 
-  <!-- Open Graph / redes sociales (WhatsApp, Facebook, Instagram) -->
+  <!-- Open Graph / redes -->
   <meta property="og:type" content="restaurant" />
   <meta property="og:locale" content="es_CO" />
   <meta property="og:site_name" content="Santos Sabores" />
-  <meta property="og:title" content="Santos Sabores · Parrilla y cocina tolimense en El Carmen de Apicalá" />
-  <meta property="og:description" content="Carnes a la brasa, pescado de río y sabores del Tolima servidos en loza de barro, bajo un salón de guadua fresco y amplio." />
+  <meta property="og:title" content="Santos Sabores · Parrilla y cocina colombiana en El Carmen de Apicalá" />
+  <meta property="og:description" content="Parrilla al carbón, pescado de río y cocina colombiana bajo un salón de guadua. Todos los días de 12 a 5 p. m. Domicilios por WhatsApp." />
   <meta property="og:url" content="https://francisconinomunoz-dev.github.io/SantosSabores/" />
   <meta property="og:image" content="https://francisconinomunoz-dev.github.io/SantosSabores/img/og-santos-sabores.jpg" />
   <meta property="og:image:width" content="1200" />
@@ -37,20 +43,18 @@
   <meta property="og:image:alt" content="Salón de guadua del restaurante Santos Sabores en El Carmen de Apicalá" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Santos Sabores · Restaurante Parrilla en El Carmen de Apicalá" />
-  <meta name="twitter:description" content="Baby beef a la brasa, mojarra frita y cocina colombiana en un salón de guadua." />
+  <meta name="twitter:description" content="Baby beef al carbón, mojarra frita y cocina colombiana en un salón de guadua." />
   <meta name="twitter:image" content="https://francisconinomunoz-dev.github.io/SantosSabores/img/og-santos-sabores.jpg" />
 
-  <!-- Favicon SVG inline (llama/brasa en terracota) -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231F3A2E'/%3E%3Cpath d='M32 12c4 8 12 12 12 24a12 12 0 0 1-24 0c0-6 3-9 5-12 1 4 3 6 5 6-2-6 0-12 2-18z' fill='%23D27A55'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B0F0D'/%3E%3Cellipse cx='32' cy='14' rx='14' ry='4' fill='none' stroke='%23E2262B' stroke-width='3'/%3E%3Ctext x='32' y='52' font-family='Arial' font-weight='700' font-size='38' text-anchor='middle' fill='%23F4ECDF'%3ES%3C/text%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="img/logo-santos-sabores.png" />
 
-  <!-- Precarga de la imagen del hero (mejora LCP en móvil) -->
-  <link rel="preload" as="image" href="img/restaurante-santos-sabores-salon-guadua-800.webp"
-        imagesrcset="img/restaurante-santos-sabores-salon-guadua-800.webp 800w, img/restaurante-santos-sabores-salon-guadua-1600.webp 1600w"
-        imagesizes="100vw" />
+  <!-- Precarga de la imagen del hero (LCP en móvil) -->
+  <link rel="preload" as="image" href="img/parrilla-al-carbon-santos-sabores-540.webp"
+        imagesrcset="img/parrilla-al-carbon-santos-sabores-540.webp 540w, img/parrilla-al-carbon-santos-sabores-1080.webp 1080w"
+        imagesizes="(min-width:1024px) 48vw, 100vw" />
 
-  <!-- ===================== DATOS ESTRUCTURADOS (JSON-LD) =====================
-       Le dicen a Google qué es el negocio, dónde está, horarios y teléfono.
-       ⚠️ Coordenadas aproximadas: verifícalas con tu ficha de Google Business. -->
+  <!-- ===================== DATOS ESTRUCTURADOS (JSON-LD) ===================== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -58,24 +62,26 @@
     "@id": "https://francisconinomunoz-dev.github.io/SantosSabores/#restaurante",
     "name": "Santos Sabores - Restaurante Parrilla",
     "alternateName": "Santos Sabores",
-    "description": "Restaurante y parrilla en El Carmen de Apicalá, Tolima: abierto todos los días de 12:00 a 5:00 p. m. con carnes a la brasa, mojarra frita, bagre en salsa y cocina típica colombiana servida en loza de barro. Pet friendly y con parqueadero propio.",
+    "slogan": "Parrilla & Cocina",
+    "description": "Restaurante parrilla en El Carmen de Apicalá, Tolima, abierto todos los días de 12:00 a 5:00 p. m. Carnes al carbón, pescados de río, platos típicos colombianos y domicilios. Pet friendly y con parqueadero propio.",
     "url": "https://francisconinomunoz-dev.github.io/SantosSabores/",
+    "logo": "https://francisconinomunoz-dev.github.io/SantosSabores/img/logo-santos-sabores.png",
     "telephone": "+57 311 5239953",
     "image": [
       "https://francisconinomunoz-dev.github.io/SantosSabores/img/og-santos-sabores.jpg",
-      "https://francisconinomunoz-dev.github.io/SantosSabores/img/churrasco-parrilla-carmen-de-apicala-1600.webp",
+      "https://francisconinomunoz-dev.github.io/SantosSabores/img/parrilla-al-carbon-santos-sabores-1080.webp",
       "https://francisconinomunoz-dev.github.io/SantosSabores/img/mojarra-frita-patacon-yuca-1600.webp"
     ],
     "priceRange": "$$",
     "servesCuisine": ["Parrilla", "Colombiana", "Tolimense", "Pescados de río"],
+    "acceptsReservations": "True",
     "sameAs": ["https://www.instagram.com/rest_santos.sabores/"],
     "amenityFeature": [
       { "@type": "LocationFeatureSpecification", "name": "Pet friendly", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Parqueadero propio", "value": true }
+      { "@type": "LocationFeatureSpecification", "name": "Parqueadero propio", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Domicilios", "value": true }
     ],
-    "acceptsReservations": "True",
     "potentialAction": { "@type": "OrderAction", "name": "Domicilios por WhatsApp", "target": "https://wa.me/573115239953" },
-    "hasMenu": "https://francisconinomunoz-dev.github.io/SantosSabores/#menu",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Cra. 10 #5-79",
@@ -85,16 +91,40 @@
     },
     "geo": { "@type": "GeoCoordinates", "latitude": 4.1503, "longitude": -74.7186 },
     "hasMap": "https://www.google.com/maps/search/?api=1&query=Santos+Sabores+Restaurante+Parrilla+Carmen+de+Apical%C3%A1",
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-        "opens": "12:00",
-        "closes": "17:00"
-      }
-    ],
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "12:00",
+      "closes": "17:00"
+    }],
     "areaServed": ["Carmen de Apicalá", "Melgar", "Cunday", "Suárez", "Tolima"],
-    "award": "Recomendado por Restaurant Guru"
+    "award": "Recomendado por Restaurant Guru",
+    "hasMenu": {
+      "@type": "Menu",
+      "name": "Carta Santos Sabores",
+      "url": "https://francisconinomunoz-dev.github.io/SantosSabores/#carta",
+      "hasMenuSection": [
+        { "@type": "MenuSection", "name": "Sopas & Caldos", "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Sancocho de Gallina" }, { "@type": "MenuItem", "name": "Ajiaco Santafereño" },
+          { "@type": "MenuItem", "name": "Caldo de Costilla" }, { "@type": "MenuItem", "name": "Sopa del Día" } ] },
+        { "@type": "MenuSection", "name": "Parrilla", "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Baby Beef a la Parrilla" }, { "@type": "MenuItem", "name": "Costilla de Res" },
+          { "@type": "MenuItem", "name": "Pechuga a la Parrilla" }, { "@type": "MenuItem", "name": "Picada Santos" },
+          { "@type": "MenuItem", "name": "Chuleta de Cerdo" }, { "@type": "MenuItem", "name": "Chorizo Artesanal" } ] },
+        { "@type": "MenuSection", "name": "Pescados & Mariscos", "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Mojarra Frita" }, { "@type": "MenuItem", "name": "Bagre en Salsa" },
+          { "@type": "MenuItem", "name": "Trucha al Ajillo" }, { "@type": "MenuItem", "name": "Filete de Pescado" } ] },
+        { "@type": "MenuSection", "name": "Platos Típicos", "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Bandeja Paisa" }, { "@type": "MenuItem", "name": "Almuerzo del Día" },
+          { "@type": "MenuItem", "name": "Chicharrón con Yuca" }, { "@type": "MenuItem", "name": "Pollo Asado" } ] },
+        { "@type": "MenuSection", "name": "Desayunos", "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Calentado Santandereano" }, { "@type": "MenuItem", "name": "Huevos al Gusto" },
+          { "@type": "MenuItem", "name": "Changua" }, { "@type": "MenuItem", "name": "Desayuno Campesino" } ] },
+        { "@type": "MenuSection", "name": "Bebidas", "hasMenuItem": [
+          { "@type": "MenuItem", "name": "Jugos Naturales" }, { "@type": "MenuItem", "name": "Limonada de Coco" },
+          { "@type": "MenuItem", "name": "Tinto & Aromática" }, { "@type": "MenuItem", "name": "Refrescos & Agua" } ] }
+      ]
+    }
   }
   </script>
 
@@ -103,18 +133,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- ===================== TAILWIND (CDN) + CONFIG DE MARCA ===================== -->
+  <!-- ===================== TAILWIND (CDN) + PALETA OSCURA ===================== -->
   <script src="https://cdn.tailwindcss.com/3.4.16"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            crema:    '#F7F1E7',  // fondo claro principal
-            arena:    { DEFAULT: '#E6D3B3', 200: '#EFE3CE', 600: '#B89A6B' },
-            terracota:{ DEFAULT: '#C4683F', 400: '#D27A55', 700: '#9A4A2A' },
-            botanico: { DEFAULT: '#1F3A2E', 800: '#172C23', 900: '#101F18', 600: '#2E5443' },
-            tinta:    '#1A1612'   // texto oscuro cálido
+            noche:    { DEFAULT: '#0B0F0D', 800: '#101613', 700: '#151D19' }, // fondos base
+            carbon:   '#14110E',                                              // negro cálido
+            botanico: { DEFAULT: '#1F3A2E', 600: '#2E5443', 900: '#0F1C16' }, // verde botánico
+            crema:    '#F4ECDF',                                              // texto principal
+            arena:    { DEFAULT: '#E2CBA4', 600: '#B89A6B' },                 // acentos arena
+            terracota:{ DEFAULT: '#C9693F', 400: '#E08A5F', 700: '#9A4A2A' }, // acento principal
+            halo:     '#E2262B'                                               // rojo del logo
           },
           fontFamily: {
             display: ['Fraunces', 'Georgia', 'serif'],
@@ -126,560 +158,628 @@
     }
   </script>
 
-  <!-- ===================== CSS PROPIO (animaciones y detalles) ===================== -->
+  <!-- ===================== CSS PROPIO ===================== -->
   <style>
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-    body { background: #F7F1E7; color: #1A1612; }
+    html { -webkit-text-size-adjust: 100%; background: #0B0F0D; }
+    body { background: #0B0F0D; color: #F4ECDF; }
+    ::selection { background: #C9693F; color: #F4ECDF; }
+    [hidden] { display: none !important; } /* evita que "grid" muestre paneles ocultos */
 
-    /* Aparición al hacer scroll (la activa el IntersectionObserver del final) */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
-    .reveal.is-visible { opacity: 1; transform: none; }
-    .reveal[data-delay="1"] { transition-delay: .12s; }
-    .reveal[data-delay="2"] { transition-delay: .24s; }
-    .reveal[data-delay="3"] { transition-delay: .36s; }
+    /* Estado inicial de animaciones (solo si hay JS; si GSAP falla, .no-anim lo muestra) */
+    .js [data-a] { opacity: 0; }
+    .js .line > span { display: inline-block; transform: translateY(110%); }
+    .no-anim [data-a], .no-anim .line > span { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+    .line { display: block; overflow: hidden; padding-bottom: .06em; }
 
-    /* Zoom lento de la foto del hero */
-    @keyframes kenburns { from { transform: scale(1.08); } to { transform: scale(1); } }
-    .hero-img { animation: kenburns 9s ease-out both; }
+    /* Grano de película sobre todo el sitio */
+    .grain-overlay { position: fixed; inset: -50%; z-index: 70; pointer-events: none; opacity: .06;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      animation: grain 1.2s steps(6) infinite; }
+    @keyframes grain { 0%{transform:translate(0,0)} 20%{transform:translate(-3%,2%)} 40%{transform:translate(2%,-3%)} 60%{transform:translate(-2%,-1%)} 80%{transform:translate(3%,3%)} 100%{transform:translate(0,0)} }
 
-    /* Textura de grano sutil sobre fondos oscuros */
-    .grain::after { content:""; position:absolute; inset:0; pointer-events:none; opacity:.07;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    /* Marquesinas infinitas */
+    .marquee { display: flex; width: max-content; animation: marquee var(--speed, 32s) linear infinite; }
+    .marquee-wrap:hover .marquee.pausable { animation-play-state: paused; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
 
-    /* Carrusel de reseñas: scroll-snap sin barra visible */
-    .snap-row { scroll-snap-type: x mandatory; scrollbar-width: none; }
-    .snap-row::-webkit-scrollbar { display: none; }
-    .snap-row > * { scroll-snap-align: start; }
+    /* Texto con contorno */
+    .outline-text { -webkit-text-stroke: 1px rgba(226,203,164,.16); color: transparent; }
 
-    /* Pulso del botón flotante de WhatsApp */
-    @keyframes ping-soft { 0% { transform: scale(1); opacity:.55 } 80%,100% { transform: scale(1.6); opacity:0 } }
+    /* Brillo animado en el botón principal */
+    .btn-shine { position: relative; overflow: hidden; isolation: isolate; }
+    .btn-shine::after { content: ""; position: absolute; inset: 0; z-index: -1; transform: translateX(-120%) skewX(-20deg);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.28), transparent); animation: shine 3.6s ease-in-out infinite; }
+    @keyframes shine { 0%, 60% { transform: translateX(-120%) skewX(-20deg); } 100% { transform: translateX(220%) skewX(-20deg); } }
+
+    /* Indicador de scroll */
+    @keyframes drip { 0% { transform: translateY(-100%); } 100% { transform: translateY(250%); } }
+    .scroll-line::after { content:""; position:absolute; left:0; top:0; width:100%; height:40%; background:#E08A5F; animation: drip 1.8s cubic-bezier(.6,0,.3,1) infinite; }
+
+    /* Pulso del botón de WhatsApp */
+    @keyframes ping-soft { 0% { transform: scale(1); opacity:.5 } 80%,100% { transform: scale(1.7); opacity:0 } }
     .wa-ping { animation: ping-soft 2.4s cubic-bezier(0,0,.2,1) infinite; }
 
-    /* FAQ: icono rota al abrir */
+    /* Cursor personalizado (solo con mouse) */
+    .cursor { position: fixed; top: 0; left: 0; z-index: 80; pointer-events: none; width: 34px; height: 34px; margin: -17px 0 0 -17px;
+      border: 1px solid rgba(224,138,95,.7); border-radius: 999px; transition: width .3s, height .3s, margin .3s, background .3s, border-color .3s; mix-blend-mode: difference; }
+    .cursor.is-hover { width: 70px; height: 70px; margin: -35px 0 0 -35px; background: rgba(244,236,223,.95); border-color: transparent; }
+    .cursor-dot { position: fixed; top: 0; left: 0; z-index: 80; pointer-events: none; width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; border-radius: 999px; background: #E08A5F; }
+    .cursor, .cursor-dot { display: none; }
+    .has-cursor .cursor, .has-cursor .cursor-dot { display: block; } /* solo con mouse (lo activa JS) */
+
+    /* Pestañas de la carta */
+    .tab[aria-selected="true"] { color: #0B0F0D; }
+    .tab-row { scrollbar-width: none; } .tab-row::-webkit-scrollbar { display: none; }
+    .menu-leader { flex: 1; border-bottom: 1px dashed rgba(226,203,164,.22); transform: translateY(-5px); min-width: 1.5rem; }
+
+    /* FAQ */
     details[open] .faq-icon { transform: rotate(45deg); }
     summary::-webkit-details-marker { display: none; }
 
-    /* Respeta usuarios que prefieren menos movimiento */
+    /* Tarjetas con brillo que sigue al mouse */
+    .glow-card { --mx: 50%; --my: 50%; }
+    .glow-card::before { content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; opacity:0; transition: opacity .4s;
+      background: radial-gradient(420px circle at var(--mx) var(--my), rgba(224,138,95,.16), transparent 45%); z-index: 1; }
+    .glow-card:hover::before { opacity: 1; }
+
+    /* Menos movimiento si el usuario lo pide */
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .reveal { opacity: 1; transform: none; transition: none; }
-      .hero-img, .wa-ping { animation: none; }
+      .js [data-a], .js .line > span { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+      .marquee, .grain-overlay, .wa-ping, .btn-shine::after, .scroll-line::after { animation: none !important; }
+      .cursor, .cursor-dot, #embers { display: none; }
     }
   </style>
 </head>
 
-<body class="font-sans antialiased selection:bg-terracota selection:text-crema">
+<body class="font-sans antialiased">
 
-  <!-- Enlace de accesibilidad para saltar al contenido -->
-  <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-crema focus:px-4 focus:py-2 focus:rounded-full">Saltar al contenido</a>
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[90] focus:bg-crema focus:text-noche focus:px-4 focus:py-2 focus:rounded-full">Saltar al contenido</a>
+
+  <!-- Barra de progreso de lectura -->
+  <div id="progress" class="fixed left-0 top-0 z-[60] h-[2px] w-full origin-left scale-x-0 bg-gradient-to-r from-terracota via-terracota-400 to-arena" aria-hidden="true"></div>
 
   <!-- =====================================================================
-       HEADER / NAVEGACIÓN FIJA
-       Transparente sobre el hero; se vuelve sólida al hacer scroll (JS).
+       HEADER / NAVEGACIÓN
        ===================================================================== -->
-  <header id="header" class="fixed inset-x-0 top-0 z-50 transition-all duration-500">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8" aria-label="Principal">
-      <!-- Logo -->
-      <a href="#inicio" class="group flex items-center gap-2.5 text-crema" aria-label="Santos Sabores, inicio">
-        <span class="grid h-9 w-9 place-items-center rounded-full bg-terracota/90 ring-1 ring-crema/30">
-          <i data-lucide="flame" class="h-4 w-4"></i>
-        </span>
-        <span class="leading-none">
-          <span class="block font-display text-xl font-medium tracking-tight">Santos Sabores</span>
-          <span class="block text-[10px] uppercase tracking-ultra text-arena/80">Parrilla · Tolima</span>
-        </span>
+  <header id="header" class="fixed inset-x-0 top-0 z-50 transition-[background,box-shadow,backdrop-filter] duration-500">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-8" aria-label="Principal">
+      <a href="#inicio" class="block" aria-label="Santos Sabores, inicio">
+        <img src="img/logo-santos-sabores.webp" width="592" height="334" alt="Santos Sabores Parrilla & Cocina" class="h-10 w-auto md:h-12" />
       </a>
 
-      <!-- Enlaces escritorio -->
-      <ul class="hidden items-center gap-8 text-sm font-medium text-crema/85 lg:flex">
-        <li><a href="#menu" class="transition hover:text-arena">Menú</a></li>
-        <li><a href="#esencia" class="transition hover:text-arena">El lugar</a></li>
-        <li><a href="#resenas" class="transition hover:text-arena">Reseñas</a></li>
-        <li><a href="#contacto" class="transition hover:text-arena">Ubicación</a></li>
+      <ul class="hidden items-center gap-9 text-sm font-medium text-crema/80 lg:flex">
+        <li><a href="#especialidades" class="py-1 transition hover:text-terracota-400">Especialidades</a></li>
+        <li><a href="#carta" class="py-1 transition hover:text-terracota-400">Carta</a></li>
+        <li><a href="#esencia" class="py-1 transition hover:text-terracota-400">El lugar</a></li>
+        <li><a href="#resenas" class="py-1 transition hover:text-terracota-400">Reseñas</a></li>
+        <li><a href="#contacto" class="py-1 transition hover:text-terracota-400">Ubicación</a></li>
       </ul>
 
       <div class="flex items-center gap-2">
-        <a href="https://wa.me/573115239953?text=Hola%20Santos%20Sabores%2C%20quiero%20reservar%20una%20mesa" target="_blank" rel="noopener"
-           class="hidden rounded-full bg-terracota px-5 py-2.5 text-sm font-semibold text-crema shadow-lg shadow-terracota/20 transition hover:bg-terracota-700 sm:inline-flex">
+        <a href="https://wa.me/573115239953?text=Hola%20Santos%20Sabores%2C%20quiero%20reservar%20una%20mesa" target="_blank" rel="noopener" data-magnetic
+           class="btn-shine hidden rounded-full bg-terracota px-5 py-2.5 text-sm font-semibold text-crema shadow-lg shadow-terracota/20 transition-colors hover:bg-terracota-700 sm:inline-flex">
           Reservar
         </a>
-        <!-- Botón menú móvil -->
-        <button id="menuBtn" class="grid h-11 w-11 place-items-center rounded-full text-crema ring-1 ring-crema/30 lg:hidden" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú">
-          <i data-lucide="menu" class="h-5 w-5"></i>
+        <button id="menuBtn" class="relative grid h-11 w-11 place-items-center rounded-full text-crema ring-1 ring-crema/25 lg:hidden" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú">
+          <span class="burger absolute block h-px w-5 -translate-y-[3px] bg-current transition duration-300"></span>
+          <span class="burger absolute block h-px w-5 translate-y-[3px] bg-current transition duration-300"></span>
         </button>
       </div>
     </nav>
 
-    <!-- Menú móvil desplegable -->
-    <div id="mobileMenu" class="pointer-events-none fixed inset-0 -z-10 flex flex-col justify-end bg-botanico-900/95 px-6 pb-10 pt-28 opacity-0 backdrop-blur transition-opacity duration-300 lg:hidden">
-      <ul class="space-y-2 font-display text-4xl text-crema">
-        <li><a href="#menu" class="block py-2" data-close>Menú</a></li>
-        <li><a href="#esencia" class="block py-2" data-close>El lugar</a></li>
-        <li><a href="#resenas" class="block py-2" data-close>Reseñas</a></li>
-        <li><a href="#contacto" class="block py-2" data-close>Ubicación</a></li>
+    <!-- Menú móvil a pantalla completa -->
+    <div id="mobileMenu" class="pointer-events-none fixed inset-0 -z-10 flex flex-col justify-end bg-noche/95 px-6 pb-10 pt-28 opacity-0 backdrop-blur-xl transition-opacity duration-500 lg:hidden">
+      <ul class="space-y-1 font-display text-[2.6rem] font-light leading-tight text-crema">
+        <li><a href="#especialidades" class="m-link flex items-baseline gap-3 py-1" data-close><span class="font-sans text-xs text-terracota-400">01</span>Especialidades</a></li>
+        <li><a href="#carta" class="m-link flex items-baseline gap-3 py-1" data-close><span class="font-sans text-xs text-terracota-400">02</span>Carta</a></li>
+        <li><a href="#esencia" class="m-link flex items-baseline gap-3 py-1" data-close><span class="font-sans text-xs text-terracota-400">03</span>El lugar</a></li>
+        <li><a href="#resenas" class="m-link flex items-baseline gap-3 py-1" data-close><span class="font-sans text-xs text-terracota-400">04</span>Reseñas</a></li>
+        <li><a href="#contacto" class="m-link flex items-baseline gap-3 py-1" data-close><span class="font-sans text-xs text-terracota-400">05</span>Ubicación</a></li>
       </ul>
       <a href="https://wa.me/573115239953?text=Hola%20Santos%20Sabores%2C%20quiero%20reservar%20una%20mesa" target="_blank" rel="noopener"
          class="mt-10 inline-flex items-center justify-center gap-2 rounded-full bg-terracota px-6 py-4 font-semibold text-crema">
-        <i data-lucide="calendar-check" class="h-5 w-5"></i> Reservar mesa
+        <i data-lucide="calendar-check" class="h-5 w-5"></i> Reservar o pedir domicilio
       </a>
-      <p class="mt-6 text-sm text-arena/70">Cra. 10 #5-79 · Carmen de Apicalá</p>
+      <p class="mt-6 pr-20 text-sm text-arena/60">Cra. 10 #5-79 · Carmen de Apicalá · Todos los días 12–5 p. m.</p>
     </div>
   </header>
 
   <main id="contenido">
 
     <!-- =====================================================================
-         HERO · imagen a pantalla completa + overlay oscuro
+         HERO · foto de la parrilla + brasas animadas
          ===================================================================== -->
-    <section id="inicio" class="grain relative isolate flex min-h-[100svh] items-end overflow-hidden bg-botanico-900">
-      <img src="img/restaurante-santos-sabores-salon-guadua-800.webp"
-           srcset="img/restaurante-santos-sabores-salon-guadua-800.webp 800w, img/restaurante-santos-sabores-salon-guadua-1600.webp 1600w"
-           sizes="100vw" width="1600" height="835" fetchpriority="high"
-           alt="Salón de guadua del restaurante Santos Sabores en El Carmen de Apicalá, Tolima"
-           class="hero-img absolute inset-0 -z-10 h-full w-full object-cover object-[60%_center]" />
-      <!-- Overlay: degradado oscuro para legibilidad -->
-      <div class="absolute inset-0 -z-10 bg-gradient-to-t from-botanico-900 via-botanico-900/70 to-tinta/40"></div>
+    <section id="inicio" class="relative isolate min-h-[100svh] overflow-hidden bg-noche">
+      <!-- Imagen: fondo completo en móvil, panel derecho en escritorio -->
+      <div class="absolute inset-0 -z-20 overflow-hidden lg:left-auto lg:w-[50%]">
+        <img src="img/parrilla-al-carbon-santos-sabores-540.webp"
+             srcset="img/parrilla-al-carbon-santos-sabores-540.webp 540w, img/parrilla-al-carbon-santos-sabores-1080.webp 1080w"
+             sizes="(min-width:1024px) 50vw, 100vw" width="1080" height="1350" fetchpriority="high"
+             alt="Carnes, chorizos y pechugas asándose en la parrilla al carbón de Santos Sabores"
+             id="heroImg" class="h-full w-full scale-110 object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-noche via-noche/75 to-noche/30 lg:bg-gradient-to-r lg:from-noche lg:via-noche/25 lg:to-transparent"></div>
+      </div>
+      <!-- Brasas (canvas) -->
+      <canvas id="embers" class="pointer-events-none absolute inset-0 -z-10 h-full w-full" aria-hidden="true"></canvas>
+      <!-- Resplandor cálido -->
+      <div class="pointer-events-none absolute -bottom-40 left-1/2 -z-10 h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-terracota/20 blur-[120px] lg:left-[70%]" aria-hidden="true"></div>
 
-      <div class="mx-auto w-full max-w-7xl px-5 pb-14 pt-32 md:px-8 md:pb-20">
-        <p class="reveal mb-5 inline-flex items-center gap-2 rounded-full border border-arena/30 bg-tinta/30 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-ultra text-arena backdrop-blur">
-          <i data-lucide="map-pin" class="h-3.5 w-3.5"></i> El Carmen de Apicalá · Tolima
-        </p>
+      <div class="mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pb-12 pt-32 md:px-8 lg:justify-center lg:pb-24">
+        <div class="max-w-2xl">
+          <p data-a="fade" class="hero-in mb-6 inline-flex items-center gap-2 rounded-full border border-arena/25 bg-noche/40 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-ultra text-arena backdrop-blur">
+            <span class="h-1.5 w-1.5 rounded-full bg-terracota-400"></span> El Carmen de Apicalá · Tolima
+          </p>
 
-        <!-- H1 con la palabra clave principal (restaurante + ubicación) -->
-        <h1 class="reveal font-display text-[2.75rem] font-light leading-[1.02] tracking-tight text-crema sm:text-6xl md:text-7xl lg:text-8xl" data-delay="1">
-          <span class="sr-only">Santos Sabores, restaurante parrilla en El Carmen de Apicalá: </span>
-          Fuego, barro <br class="hidden sm:block" />y <em class="font-normal italic text-terracota-400">sabor</em> del Tolima
-        </h1>
+          <h1 class="font-display text-[3.1rem] font-light leading-[.98] tracking-tight text-crema sm:text-7xl lg:text-[6.2rem]">
+            <span class="sr-only">Santos Sabores, restaurante parrilla en El Carmen de Apicalá: </span>
+            <span class="line"><span>Fuego, barro</span></span>
+            <span class="line"><span>y <em class="font-normal italic text-terracota-400">sabor</em> del</span></span>
+            <span class="line"><span>Tolima<span class="text-terracota-400">.</span></span></span>
+          </h1>
 
-        <p class="reveal mt-6 max-w-xl text-base leading-relaxed text-crema/80 md:text-lg" data-delay="2">
-          Todos los días de 12 a 5 p. m.: parrilla al carbón, pescado de río y recetas de la tierra
-          servidas en loza de barro, bajo un gran salón de guadua donde la brisa de Apicalá invita a quedarse.
-        </p>
+          <p data-a="fade" class="hero-in mt-7 max-w-lg text-base leading-relaxed text-crema/75 md:text-lg">
+            Parrilla al carbón, pescado de río y cocina colombiana de alma, servidos en loza de barro
+            bajo un gran salón de guadua. Todos los días de 12 a 5 p. m.
+          </p>
 
-        <div class="reveal mt-9 flex flex-col gap-3 sm:flex-row" data-delay="3">
-          <a href="https://wa.me/573115239953?text=Hola%20Santos%20Sabores%2C%20quiero%20reservar%20una%20mesa" target="_blank" rel="noopener"
-             class="inline-flex items-center justify-center gap-2 rounded-full bg-terracota px-7 py-4 font-semibold text-crema shadow-xl shadow-terracota/25 transition hover:-translate-y-0.5 hover:bg-terracota-700">
-            <i data-lucide="calendar-check" class="h-5 w-5"></i> Reservar Mesa
-          </a>
-          <a href="#menu"
-             class="inline-flex items-center justify-center gap-2 rounded-full border border-crema/40 px-7 py-4 font-semibold text-crema backdrop-blur transition hover:bg-crema hover:text-tinta">
-            Ver Menú <i data-lucide="arrow-down-right" class="h-5 w-5"></i>
-          </a>
+          <div data-a="fade" class="hero-in mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="https://wa.me/573115239953?text=Hola%20Santos%20Sabores%2C%20quiero%20reservar%20una%20mesa" target="_blank" rel="noopener" data-magnetic
+               class="btn-shine inline-flex items-center justify-center gap-2 rounded-full bg-terracota px-8 py-4 font-semibold text-crema shadow-2xl shadow-terracota/30 transition-colors hover:bg-terracota-700">
+              <i data-lucide="calendar-check" class="h-5 w-5"></i> Reservar Mesa
+            </a>
+            <a href="#carta" data-magnetic
+               class="inline-flex items-center justify-center gap-2 rounded-full border border-crema/30 bg-noche/30 px-8 py-4 font-semibold text-crema backdrop-blur transition-colors hover:border-crema hover:bg-crema hover:text-noche">
+              Ver Menú <i data-lucide="arrow-down-right" class="h-5 w-5"></i>
+            </a>
+          </div>
+
+          <!-- Pruebas de confianza -->
+          <div data-a="fade" class="hero-in mt-12 flex flex-wrap items-center gap-x-8 gap-y-4 pr-16 text-sm sm:pr-0">
+            <a href="https://www.google.com/maps/search/?api=1&query=Santos+Sabores+Restaurante+Parrilla+Carmen+de+Apical%C3%A1" target="_blank" rel="noopener" class="flex items-center gap-3 text-crema/80 transition hover:text-crema">
+              <span class="font-display text-3xl text-crema">4,7</span>
+              <span class="leading-tight"><span class="flex gap-0.5 text-terracota-400"><i data-lucide="star" class="h-3.5 w-3.5 fill-current"></i><i data-lucide="star" class="h-3.5 w-3.5 fill-current"></i><i data-lucide="star" class="h-3.5 w-3.5 fill-current"></i><i data-lucide="star" class="h-3.5 w-3.5 fill-current"></i><i data-lucide="star" class="h-3.5 w-3.5 fill-current"></i></span>+80 reseñas en Google</span>
+            </a>
+            <span class="hidden h-8 w-px bg-crema/15 sm:block"></span>
+            <a href="https://es.restaurantguru.com/widget-awards?ODQ2NjY1OTN8ZTVlOWJjYmViYTg4N2RhYzk0MWVjMGNkYTBkMGI4MjY=" target="_blank" rel="noopener" class="flex items-center gap-3 text-crema/80 transition hover:text-crema">
+              <span class="grid h-10 w-10 place-items-center rounded-full bg-arena text-noche"><i data-lucide="award" class="h-5 w-5"></i></span>
+              <span class="leading-tight"><strong class="block font-semibold text-crema">Restaurant Guru</strong>Recomendado</span>
+            </a>
+          </div>
         </div>
+      </div>
 
-        <!-- Sello de reconocimiento (Restaurant Guru) -->
-        <a href="https://es.restaurantguru.com/widget-awards?ODQ2NjY1OTN8ZTVlOWJjYmViYTg4N2RhYzk0MWVjMGNkYTBkMGI4MjY=" target="_blank" rel="noopener"
-           class="reveal mt-12 inline-flex items-center gap-3 pr-20 text-crema/80 sm:pr-0 transition hover:text-crema" data-delay="3">
-          <span class="grid h-11 w-11 place-items-center rounded-full bg-arena text-botanico"><i data-lucide="award" class="h-5 w-5"></i></span>
-          <span class="text-sm leading-tight"><strong class="block font-semibold text-crema">Recomendado por Restaurant Guru</strong>Reconocimiento a la experiencia gastronómica</span>
-        </a>
+      <!-- Indicador de scroll (escritorio) -->
+      <div class="absolute bottom-8 left-8 hidden flex-col items-center gap-3 text-[10px] uppercase tracking-ultra text-crema/50 lg:flex" aria-hidden="true">
+        <span class="scroll-line relative h-14 w-px overflow-hidden bg-crema/15"></span> Scroll
       </div>
     </section>
 
-    <!-- Franja de atributos (keywords naturales para SEO) -->
-    <section aria-label="Lo que nos define" class="border-b border-arena bg-crema">
-      <ul class="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-arena/70 text-center md:grid-cols-4">
-        <li class="flex flex-col items-center gap-2 bg-crema px-4 py-7"><i data-lucide="flame" class="h-5 w-5 text-terracota"></i><span class="text-sm font-semibold">Parrilla a la brasa</span></li>
-        <li class="flex flex-col items-center gap-2 bg-crema px-4 py-7"><i data-lucide="fish" class="h-5 w-5 text-terracota"></i><span class="text-sm font-semibold">Pescado de río</span></li>
-        <li class="flex flex-col items-center gap-2 bg-crema px-4 py-7"><i data-lucide="paw-print" class="h-5 w-5 text-terracota"></i><span class="text-sm font-semibold">Pet friendly</span></li>
-        <li class="flex flex-col items-center gap-2 bg-crema px-4 py-7"><i data-lucide="car" class="h-5 w-5 text-terracota"></i><span class="text-sm font-semibold">Parqueadero propio</span></li>
-      </ul>
+    <!-- Marquesina de atributos -->
+    <section aria-label="Lo que nos define" class="relative overflow-hidden border-y border-crema/10 bg-terracota py-4 text-crema">
+      <div class="marquee" style="--speed: 38s">
+        <!-- El contenido se duplica por JS para un loop perfecto -->
+        <ul class="marquee-group flex shrink-0 items-center gap-10 pr-10 font-display text-2xl italic md:text-3xl">
+          <li>Parrilla al carbón</li><li aria-hidden="true">✦</li>
+          <li>Pescado de río</li><li aria-hidden="true">✦</li>
+          <li>Cocina colombiana</li><li aria-hidden="true">✦</li>
+          <li>Domicilios</li><li aria-hidden="true">✦</li>
+          <li>Pet friendly</li><li aria-hidden="true">✦</li>
+          <li>Parqueadero propio</li><li aria-hidden="true">✦</li>
+          <li>Salón de guadua</li><li aria-hidden="true">✦</li>
+        </ul>
+      </div>
     </section>
 
     <!-- =====================================================================
-         MENÚ DESTACADO · 4 especialidades
-         Platos de la carta real; precio a consultar.
+         ESPECIALIDADES · 4 platos estrella con foto
          ===================================================================== -->
-    <section id="menu" class="bg-crema py-20 md:py-28" aria-labelledby="menu-titulo">
+    <section id="especialidades" class="relative bg-noche py-24 md:py-32" aria-labelledby="esp-titulo">
       <div class="mx-auto max-w-7xl px-5 md:px-8">
-        <div class="mb-12 flex flex-col gap-5 md:mb-16 md:flex-row md:items-end md:justify-between">
+        <div class="mb-14 flex flex-col gap-6 md:mb-20 md:flex-row md:items-end md:justify-between">
           <div>
-            <p class="reveal text-xs font-semibold uppercase tracking-ultra text-terracota">Especialidades de la casa</p>
-            <h2 id="menu-titulo" class="reveal mt-3 max-w-xl font-display text-4xl font-light leading-tight md:text-6xl" data-delay="1">
-              Lo que se pide <em class="italic text-terracota">una y otra vez</em>
+            <p data-a="up" class="text-xs font-semibold uppercase tracking-ultra text-terracota-400">01 — Especialidades de la casa</p>
+            <h2 id="esp-titulo" class="mt-4 max-w-2xl font-display text-[2.6rem] font-light leading-[1.02] md:text-7xl">
+              <span class="line"><span>Lo que se pide</span></span>
+              <span class="line"><span><em class="italic text-terracota-400">una y otra vez</em></span></span>
             </h2>
           </div>
-          <p class="reveal max-w-sm text-tinta/70" data-delay="2">
-            Cocina colombiana de alma: brasa de carbón, pescado de río y acompañantes de siempre, con ingredientes frescos del Tolima.
-          </p>
+          <p data-a="up" class="max-w-sm text-crema/60">Brasa de carbón, pescado de río y acompañantes de siempre, con ingredientes frescos del Tolima.</p>
         </div>
 
-        <!-- Grid: 1 col móvil · 2 tablet · 4 escritorio -->
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-
-          <!-- Plato 1 · Carnes a la brasa -->
-          <article class="reveal group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-arena/60 transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-terracota/10">
+          <!-- Plato 1 -->
+          <article data-a="card" class="glow-card group relative overflow-hidden rounded-[1.75rem] bg-noche-700 ring-1 ring-crema/10 transition-shadow duration-500 hover:ring-terracota/40">
             <div class="relative aspect-[4/5] overflow-hidden">
               <img src="img/churrasco-parrilla-carmen-de-apicala-800.webp" width="800" height="1067" loading="lazy" decoding="async"
                    alt="Baby beef a la parrilla con papas fritas y ají casero en tabla de madera"
-                   class="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
-              <span class="absolute left-4 top-4 rounded-full bg-tinta/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-crema backdrop-blur">A la brasa</span>
+                   class="h-full w-full object-cover transition duration-[1.2s] ease-out group-hover:scale-110" />
+              <div class="absolute inset-0 bg-gradient-to-t from-noche-700 via-transparent to-transparent"></div>
+              <span class="absolute left-4 top-4 z-10 rounded-full bg-noche/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-arena backdrop-blur">Parrilla</span>
             </div>
-            <div class="p-6">
-              <div class="flex items-baseline justify-between gap-3">
-                <h3 class="font-display text-2xl">Baby Beef a la parrilla</h3>
-                <p class="shrink-0 text-xs font-semibold uppercase tracking-widest text-terracota">Consultar</p>
-              </div>
-              <p class="mt-2 text-sm leading-relaxed text-tinta/70">Corte tierno asado al carbón, servido en plancha caliente con papas y ají de la casa.</p>
+            <div class="relative z-10 -mt-10 p-6">
+              <h3 class="font-display text-2xl">Baby Beef a la parrilla</h3>
+              <p class="mt-2 text-sm leading-relaxed text-crema/60">Corte tierno asado al carbón, servido en plancha caliente con papas y ají de la casa.</p>
             </div>
           </article>
-
-          <!-- Plato 2 · Pescados -->
-          <article class="reveal group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-arena/60 transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-terracota/10" data-delay="1">
+          <!-- Plato 2 -->
+          <article data-a="card" class="glow-card group relative overflow-hidden rounded-[1.75rem] bg-noche-700 ring-1 ring-crema/10 transition-shadow duration-500 hover:ring-terracota/40 lg:mt-12">
             <div class="relative aspect-[4/5] overflow-hidden">
               <img src="img/mojarra-frita-patacon-yuca-800.webp" width="800" height="800" loading="lazy" decoding="async"
                    alt="Mojarra frita con patacón, yuca y limón sobre hoja de plátano"
-                   class="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
-              <span class="absolute left-4 top-4 rounded-full bg-tinta/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-crema backdrop-blur">Del río</span>
+                   class="h-full w-full object-cover transition duration-[1.2s] ease-out group-hover:scale-110" />
+              <div class="absolute inset-0 bg-gradient-to-t from-noche-700 via-transparent to-transparent"></div>
+              <span class="absolute left-4 top-4 z-10 rounded-full bg-noche/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-arena backdrop-blur">Del río</span>
             </div>
-            <div class="p-6">
-              <div class="flex items-baseline justify-between gap-3">
-                <h3 class="font-display text-2xl">Mojarra frita</h3>
-                <p class="shrink-0 text-xs font-semibold uppercase tracking-widest text-terracota">Consultar</p>
-              </div>
-              <p class="mt-2 text-sm leading-relaxed text-tinta/70">Mojarra entera frita al punto exacto, con patacón, yuca, ensalada y limón. Sobre hoja de bijao.</p>
+            <div class="relative z-10 -mt-10 p-6">
+              <h3 class="font-display text-2xl">Mojarra frita</h3>
+              <p class="mt-2 text-sm leading-relaxed text-crema/60">Entera, frita al punto exacto, con patacón, yuca, ensalada y limón. Sobre hoja de bijao.</p>
             </div>
           </article>
-
-          <!-- Plato 3 · Típico modernizado -->
-          <article class="reveal group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-arena/60 transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-terracota/10" data-delay="2">
+          <!-- Plato 3 -->
+          <article data-a="card" class="glow-card group relative overflow-hidden rounded-[1.75rem] bg-noche-700 ring-1 ring-crema/10 transition-shadow duration-500 hover:ring-terracota/40">
             <div class="relative aspect-[4/5] overflow-hidden">
               <img src="img/bagre-en-salsa-cazuela-de-barro-800.webp" width="800" height="597" loading="lazy" decoding="async"
                    alt="Bagre en salsa criolla en cazuela de barro con mazorca y papa, acompañado de arroz y caldo"
-                   class="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
-              <span class="absolute left-4 top-4 rounded-full bg-tinta/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-crema backdrop-blur">Típico</span>
+                   class="h-full w-full object-cover transition duration-[1.2s] ease-out group-hover:scale-110" />
+              <div class="absolute inset-0 bg-gradient-to-t from-noche-700 via-transparent to-transparent"></div>
+              <span class="absolute left-4 top-4 z-10 rounded-full bg-noche/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-arena backdrop-blur">Típico</span>
             </div>
-            <div class="p-6">
-              <div class="flex items-baseline justify-between gap-3">
-                <h3 class="font-display text-2xl">Bagre en salsa</h3>
-                <p class="shrink-0 text-xs font-semibold uppercase tracking-widest text-terracota">Consultar</p>
-              </div>
-              <p class="mt-2 text-sm leading-relaxed text-tinta/70">Bagre de río en salsa criolla con mazorca, papa y arroz, cocinado sobre hoja de bijao y servido en cazuela de barro.</p>
+            <div class="relative z-10 -mt-10 p-6">
+              <h3 class="font-display text-2xl">Bagre en salsa</h3>
+              <p class="mt-2 text-sm leading-relaxed text-crema/60">Bagre de río en salsa criolla con mazorca, papa y arroz, servido en cazuela de barro.</p>
             </div>
           </article>
-
-          <!-- Plato 4 · Bebidas (sin foto aún: tarjeta ilustrada. Reemplaza el bloque por <img> cuando tengas la foto) -->
-          <article class="reveal group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-arena/60 transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-terracota/10" data-delay="3">
-            <div class="grain relative grid aspect-[4/5] place-items-center overflow-hidden bg-gradient-to-br from-botanico-600 via-botanico to-botanico-900">
-              <div class="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-terracota/40 blur-2xl transition duration-700 group-hover:scale-125"></div>
-              <div class="absolute -bottom-12 -left-8 h-44 w-44 rounded-full bg-arena/25 blur-2xl"></div>
-              <div class="relative text-center text-crema">
-                <i data-lucide="glass-water" class="mx-auto h-16 w-16 stroke-[1.2] text-arena"></i>
-                <p class="mt-4 font-display text-3xl italic">Limonada de coco</p>
-                <p class="mt-1 text-xs uppercase tracking-ultra text-arena/80">Para el calor de Apicalá</p>
-              </div>
-              <span class="absolute left-4 top-4 rounded-full bg-tinta/50 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-crema backdrop-blur">Bar</span>
+          <!-- Plato 4 -->
+          <article data-a="card" class="glow-card group relative overflow-hidden rounded-[1.75rem] bg-noche-700 ring-1 ring-crema/10 transition-shadow duration-500 hover:ring-terracota/40 lg:mt-12">
+            <div class="relative aspect-[4/5] overflow-hidden">
+              <img src="img/bandeja-paisa-carmen-de-apicala-540.webp" srcset="img/bandeja-paisa-carmen-de-apicala-540.webp 540w, img/bandeja-paisa-carmen-de-apicala-1080.webp 1080w"
+                   sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" width="1080" height="1350" loading="lazy" decoding="async"
+                   alt="Bandeja paisa con chicharrón, fríjoles, chorizo, arroz, plátano maduro, arepa y aguacate"
+                   class="h-full w-full object-cover transition duration-[1.2s] ease-out group-hover:scale-110" />
+              <div class="absolute inset-0 bg-gradient-to-t from-noche-700 via-transparent to-transparent"></div>
+              <span class="absolute left-4 top-4 z-10 rounded-full bg-noche/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-arena backdrop-blur">Colombiano</span>
             </div>
-            <div class="p-6">
-              <div class="flex items-baseline justify-between gap-3">
-                <h3 class="font-display text-2xl">Limonada de coco &amp; jugos</h3>
-                <p class="shrink-0 text-xs font-semibold uppercase tracking-widest text-terracota">Consultar</p>
-              </div>
-              <p class="mt-2 text-sm leading-relaxed text-tinta/70">La favorita del verano, y jugos naturales de lulo, maracuyá, mango, guanábana o mora según la temporada.</p>
+            <div class="relative z-10 -mt-10 p-6">
+              <h3 class="font-display text-2xl">Bandeja paisa</h3>
+              <p class="mt-2 text-sm leading-relaxed text-crema/60">Fríjoles, chicharrón, carne molida, chorizo, arepa, maduro, arroz y aguacate.</p>
             </div>
           </article>
-        </div>
-
-        <div class="reveal mt-12 flex flex-col items-center gap-3 text-center">
-          <a href="https://wa.me/573115239953?text=Hola%2C%20%C2%BFme%20pueden%20enviar%20la%20carta%20completa%3F" target="_blank" rel="noopener"
-             class="inline-flex items-center gap-2 rounded-full border border-tinta/20 px-6 py-3 font-semibold transition hover:border-terracota hover:text-terracota">
-            Pide la carta completa por WhatsApp <i data-lucide="arrow-right" class="h-4 w-4"></i>
-          </a>
-          <p class="text-xs text-tinta/50">También: sopas y caldos, parrilla, platos típicos, almuerzo del día. Hacemos domicilios.</p>
         </div>
       </div>
     </section>
 
     <!-- =====================================================================
-         NUESTRA ESENCIA / EL LUGAR · layout asimétrico
+         CARTA COMPLETA · pestañas por categoría (contenido de la carta original)
+         Todo el texto está en el HTML (Google lo indexa aunque la pestaña esté oculta)
          ===================================================================== -->
-    <section id="esencia" class="grain relative overflow-hidden bg-botanico py-20 text-crema md:py-28" aria-labelledby="esencia-titulo">
-      <div class="mx-auto grid max-w-7xl items-center gap-14 px-5 md:px-8 lg:grid-cols-12 lg:gap-10">
+    <section id="carta" class="relative overflow-hidden bg-carbon py-24 md:py-32" aria-labelledby="carta-titulo">
+      <!-- Palabra gigante de fondo con parallax -->
+      <p class="outline-text pointer-events-none absolute left-0 top-6 select-none whitespace-nowrap font-display text-[22vw] font-light leading-none" data-parallax="-25" aria-hidden="true">Nuestra carta · Nuestra carta</p>
 
-        <!-- Collage de imágenes -->
-        <div class="relative lg:col-span-7">
-          <div class="reveal overflow-hidden rounded-[2rem] shadow-2xl shadow-black/30">
-            <img src="img/restaurante-santos-sabores-salon-guadua-800.webp"
-                 srcset="img/restaurante-santos-sabores-salon-guadua-800.webp 800w, img/restaurante-santos-sabores-salon-guadua-1600.webp 1600w"
-                 sizes="(min-width:1024px) 55vw, 100vw" width="1600" height="835" loading="lazy" decoding="async"
-                 alt="Amplio salón de guadua con mesas de madera y terraza abierta hacia el jardín"
-                 class="aspect-[4/3] w-full object-cover md:aspect-[16/10]" />
+      <div class="relative mx-auto max-w-6xl px-5 md:px-8">
+        <div class="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p data-a="up" class="text-xs font-semibold uppercase tracking-ultra text-terracota-400">02 — Lo que ofrecemos</p>
+            <h2 id="carta-titulo" class="mt-4 font-display text-[2.6rem] font-light leading-[1.02] md:text-7xl">
+              <span class="line"><span>Nuestro <em class="italic text-terracota-400">menú</em></span></span>
+            </h2>
           </div>
-          <div class="reveal absolute -bottom-10 right-3 w-[48%] overflow-hidden rounded-3xl border-4 border-botanico shadow-2xl sm:-right-4 md:w-[42%]" data-delay="2">
-            <img src="img/loza-negra-barro-artesanal-800.webp" width="800" height="446" loading="lazy" decoding="async"
-                 alt="Estantería con loza negra de barro artesanal en la que se sirven los platos"
-                 class="aspect-square w-full object-cover" />
-          </div>
-          <!-- Cifra flotante -->
-          <div class="reveal absolute -top-6 left-4 rounded-2xl bg-terracota px-5 py-4 shadow-xl md:left-8" data-delay="1">
-            <p class="font-display text-3xl leading-none">4,7 ★</p>
-            <p class="mt-1 text-[11px] uppercase tracking-widest text-crema/85">Calificación en Google</p>
+          <p data-a="up" class="max-w-sm text-crema/60">Cocina colombiana de alma. Selecciona una categoría para explorar nuestros platos.</p>
+        </div>
+
+        <!-- Pestañas (desplazables en móvil) -->
+        <div data-a="up" class="tab-row -mx-5 overflow-x-auto px-5 md:mx-0 md:px-0">
+          <div role="tablist" aria-label="Categorías de la carta" class="relative inline-flex min-w-max gap-1 rounded-full bg-noche p-1.5 ring-1 ring-crema/10">
+            <span id="tabPill" class="absolute bottom-1.5 left-0 top-1.5 rounded-full bg-arena transition-[transform,width] duration-500 ease-[cubic-bezier(.7,0,.2,1)]" aria-hidden="true"></span>
+            <button role="tab" class="tab relative z-10 rounded-full px-5 py-2.5 text-sm font-semibold text-crema/70 transition-colors" aria-selected="true" aria-controls="cat-sopas" id="t-sopas"><span class="mr-1.5 text-[10px] opacity-60">01</span>Sopas &amp; Caldos</button>
+            <button role="tab" class="tab relative z-10 rounded-full px-5 py-2.5 text-sm font-semibold text-crema/70 transition-colors" aria-selected="false" aria-controls="cat-parrilla" id="t-parrilla" tabindex="-1"><span class="mr-1.5 text-[10px] opacity-60">02</span>Parrilla</button>
+            <button role="tab" class="tab relative z-10 rounded-full px-5 py-2.5 text-sm font-semibold text-crema/70 transition-colors" aria-selected="false" aria-controls="cat-pescados" id="t-pescados" tabindex="-1"><span class="mr-1.5 text-[10px] opacity-60">03</span>Pescados &amp; Mariscos</button>
+            <button role="tab" class="tab relative z-10 rounded-full px-5 py-2.5 text-sm font-semibold text-crema/70 transition-colors" aria-selected="false" aria-controls="cat-tipicos" id="t-tipicos" tabindex="-1"><span class="mr-1.5 text-[10px] opacity-60">04</span>Platos Típicos</button>
+            <button role="tab" class="tab relative z-10 rounded-full px-5 py-2.5 text-sm font-semibold text-crema/70 transition-colors" aria-selected="false" aria-controls="cat-desayunos" id="t-desayunos" tabindex="-1"><span class="mr-1.5 text-[10px] opacity-60">05</span>Desayunos</button>
+            <button role="tab" class="tab relative z-10 rounded-full px-5 py-2.5 text-sm font-semibold text-crema/70 transition-colors" aria-selected="false" aria-controls="cat-bebidas" id="t-bebidas" tabindex="-1"><span class="mr-1.5 text-[10px] opacity-60">06</span>Bebidas</button>
           </div>
         </div>
 
-        <!-- Texto -->
-        <div class="pt-8 lg:col-span-5 lg:pt-0">
-          <p class="reveal text-xs font-semibold uppercase tracking-ultra text-arena">Nuestra esencia</p>
-          <h2 id="esencia-titulo" class="reveal mt-3 font-display text-4xl font-light leading-tight md:text-5xl" data-delay="1">
-            Un lugar para comer sin prisa, <em class="italic text-terracota-400">a la sombra de la guadua</em>
+        <!-- Paneles: nombre · línea punteada · "Consultar" -->
+        <div class="mt-10 min-h-[22rem]">
+          <!-- 01 Sopas & Caldos -->
+          <div role="tabpanel" id="cat-sopas" aria-labelledby="t-sopas" class="panel grid gap-x-14 gap-y-9 md:grid-cols-2">
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Sancocho de Gallina</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Gallina criolla, yuca, mazorca, papa y hierbas. El clásico del Tolima. Incluye arroz y aguacate.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Ajiaco Santafereño</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Pollo, tres tipos de papa, guascas y mazorca. La sopa emblemática de la cocina bogotana.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Caldo de Costilla</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Caldo reconfortante con costilla de res, papa, cilantro y cebolla larga.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Sopa del Día</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Preparación diaria según la temporada y la tradición de nuestra cocina.</p></div>
+          </div>
+          <!-- 02 Parrilla -->
+          <div role="tabpanel" id="cat-parrilla" aria-labelledby="t-parrilla" class="panel grid gap-x-14 gap-y-9 md:grid-cols-2" hidden>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Baby Beef a la Parrilla</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Corte tierno asado al carbón, acompañado de papas y ensalada.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Costilla de Res</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Costilla asada lentamente al fuego, jugosa y llena de sabor.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Pechuga a la Parrilla</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Pechuga marinada y asada al carbón. Opción más ligera sin sacrificar sabor.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Picada Santos</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Combinación de carnes a la parrilla: res, cerdo y pollo con chorizo. Ideal para compartir.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Chuleta de Cerdo</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Chuleta jugosa asada al carbón con guarnición de papa y arroz.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Chorizo Artesanal</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Chorizo casero a la parrilla, servido con arepa y ají.</p></div>
+          </div>
+          <!-- 03 Pescados & Mariscos -->
+          <div role="tabpanel" id="cat-pescados" aria-labelledby="t-pescados" class="panel grid gap-x-14 gap-y-9 md:grid-cols-2" hidden>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Mojarra Frita</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Mojarra entera frita al punto exacto, con patacón, arroz y ensalada. Sobre hoja de bijao.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Bagre en Salsa</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Bagre de río en salsa criolla con mazorca, papa y arroz. Cocinado sobre hoja de bijao.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Trucha al Ajillo</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Trucha fresca preparada al ajillo con limón y hierbas, acompañada de arroz y ensalada.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Filete de Pescado</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Filete a la plancha o frito según preferencia, con guarnición completa.</p></div>
+          </div>
+          <!-- 04 Platos Típicos -->
+          <div role="tabpanel" id="cat-tipicos" aria-labelledby="t-tipicos" class="panel grid gap-x-14 gap-y-9 md:grid-cols-2" hidden>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Bandeja Paisa</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Fríjoles, chicharrón, carne molida, chorizo, arepa, plátano maduro, arroz y aguacate.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Almuerzo del Día</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Sopa, principio, proteína del día, arroz, ensalada y jugo. El favorito de los locales.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Chicharrón con Yuca</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Chicharrón crocante con yuca frita y guacamole casero. Para compartir.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Pollo Asado</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Pollo entero o medio asado al horno con papa, mazorca y ensalada. Sabor de casa.</p></div>
+          </div>
+          <!-- 05 Desayunos -->
+          <div role="tabpanel" id="cat-desayunos" aria-labelledby="t-desayunos" class="panel grid gap-x-14 gap-y-9 md:grid-cols-2" hidden>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Calentado Santandereano</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Arroz, fríjoles, huevos y chicharrón. El desayuno que llena el alma.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Huevos al Gusto</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Fritos, revueltos o pericos con tomate y cebolla. Acompañados de arepa y jugo.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Changua</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Sopa de leche con huevo, cilantro y pan. El desayuno bogotano de toda la vida.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Desayuno Campesino</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Arepa, queso, chorizo, huevo y chocolate caliente o tinto. Bien colombiano.</p></div>
+          </div>
+          <!-- 06 Bebidas -->
+          <div role="tabpanel" id="cat-bebidas" aria-labelledby="t-bebidas" class="panel grid gap-x-14 gap-y-9 md:grid-cols-2" hidden>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Jugos Naturales</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">En agua o leche: lulo, maracuyá, mango, guanábana, mora y más según la temporada.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Limonada de Coco</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Refrescante combinación de limón, leche de coco y hielo. La favorita del verano.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Tinto &amp; Aromática</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Café colombiano de origen o aromática de hierbas. Para cerrar el almuerzo.</p></div>
+            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Refrescos &amp; Agua</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Variedad de gaseosas, aguas y bebidas frías.</p></div>
+          </div>
+        </div>
+
+        <div data-a="up" class="mt-14 flex flex-col items-start gap-4 border-t border-crema/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <p class="text-sm text-crema/55">Precios y disponibilidad del día por WhatsApp. <strong class="font-semibold text-crema/80">Hacemos domicilios.</strong></p>
+          <a href="https://wa.me/573115239953?text=Hola%2C%20%C2%BFme%20pueden%20enviar%20la%20carta%20con%20precios%3F" target="_blank" rel="noopener" data-magnetic
+             class="inline-flex items-center gap-2 rounded-full border border-crema/25 px-6 py-3 font-semibold transition-colors hover:border-terracota-400 hover:text-terracota-400">
+            Pedir carta con precios <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         NUESTRA ESENCIA / EL LUGAR · asimétrico con parallax y contadores
+         ===================================================================== -->
+    <section id="esencia" class="relative overflow-hidden bg-botanico-900 py-24 md:py-32" aria-labelledby="esencia-titulo">
+      <div class="mx-auto grid max-w-7xl items-center gap-16 px-5 md:px-8 lg:grid-cols-12 lg:gap-12">
+        <div class="relative lg:col-span-7">
+          <div data-a="clip" class="overflow-hidden rounded-[2rem]">
+            <img data-parallax-img src="img/restaurante-santos-sabores-salon-guadua-800.webp"
+                 srcset="img/restaurante-santos-sabores-salon-guadua-800.webp 800w, img/restaurante-santos-sabores-salon-guadua-1600.webp 1600w"
+                 sizes="(min-width:1024px) 55vw, 100vw" width="1600" height="835" loading="lazy" decoding="async"
+                 alt="Amplio salón de guadua de Santos Sabores con mesas de madera y terraza abierta hacia el jardín"
+                 class="aspect-[4/3] w-full scale-[1.15] object-cover md:aspect-[16/11]" />
+          </div>
+          <div class="absolute -bottom-12 right-3 w-[46%] sm:-right-6 md:w-[40%]" data-parallax="-18">
+            <div data-a="clip" class="overflow-hidden rounded-3xl border-[5px] border-botanico-900 shadow-2xl">
+              <img src="img/loza-negra-barro-artesanal-800.webp" width="800" height="446" loading="lazy" decoding="async"
+                   alt="Estantería con loza negra de barro artesanal en la que se sirven los platos"
+                   class="aspect-square w-full object-cover" />
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-6 lg:col-span-5 lg:pt-0">
+          <p data-a="up" class="text-xs font-semibold uppercase tracking-ultra text-arena">03 — Nuestra esencia</p>
+          <h2 id="esencia-titulo" class="mt-4 font-display text-[2.4rem] font-light leading-[1.05] md:text-6xl">
+            <span class="line"><span>Comer sin prisa,</span></span>
+            <span class="line"><span><em class="italic text-terracota-400">a la sombra</em></span></span>
+            <span class="line"><span><em class="italic text-terracota-400">de la guadua</em></span></span>
           </h2>
-          <p class="reveal mt-6 leading-relaxed text-crema/75" data-delay="2">
-            Construimos Santos Sabores pensando en el clima de El Carmen de Apicalá: techos altos de guadua,
-            espacios abiertos que dejan pasar la brisa y una terraza rodeada de verde. Aquí se llega con la familia,
-            con amigos o después de la piscina, y se queda uno conversando.
+          <p data-a="up" class="mt-7 leading-relaxed text-crema/70">
+            En Santos Sabores creemos que la buena cocina une a la gente. Nuestro salón de guadua, alto y abierto,
+            deja pasar la brisa de Apicalá, y alrededor hay verde para quedarse conversando después de comer.
           </p>
-          <p class="reveal mt-4 leading-relaxed text-crema/75" data-delay="2">
-            Servimos en loza negra de barro, la misma tradición artesanal del Tolima que conserva el calor
-            del plato hasta el último bocado.
+          <p data-a="up" class="mt-4 leading-relaxed text-crema/70">
+            Somos el punto de encuentro de viajeros, familias y amigos. Servimos en loza negra de barro,
+            tradición artesanal que conserva el calor del plato hasta el último bocado.
           </p>
 
-          <ul class="mt-9 grid gap-5 sm:grid-cols-2">
-            <li class="reveal flex gap-3" data-delay="1">
-              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-crema/10 text-arena"><i data-lucide="wind" class="h-5 w-5"></i></span>
-              <span><strong class="block font-semibold">Ambiente fresco</strong><span class="text-sm text-crema/65">Salón abierto y ventilado</span></span>
-            </li>
-            <li class="reveal flex gap-3" data-delay="2">
-              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-crema/10 text-arena"><i data-lucide="paw-print" class="h-5 w-5"></i></span>
-              <span><strong class="block font-semibold">Pet friendly</strong><span class="text-sm text-crema/65">Tu mascota también es bienvenida</span></span>
-            </li>
-            <li class="reveal flex gap-3" data-delay="1">
-              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-crema/10 text-arena"><i data-lucide="users" class="h-5 w-5"></i></span>
-              <span><strong class="block font-semibold">Grupos y familias</strong><span class="text-sm text-crema/65">Mesas amplias y celebraciones</span></span>
-            </li>
-            <li class="reveal flex gap-3" data-delay="2">
-              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-crema/10 text-arena"><i data-lucide="car" class="h-5 w-5"></i></span>
-              <span><strong class="block font-semibold">Parqueadero propio</strong><span class="text-sm text-crema/65">Llega tranquilo en carro o moto</span></span>
-            </li>
+          <!-- Contadores animados -->
+          <div class="mt-10 grid grid-cols-3 gap-4 border-y border-crema/10 py-7">
+            <div data-a="up"><p class="font-display text-4xl text-crema md:text-5xl"><span data-count="4.7" data-decimals="1">4,7</span><span class="text-terracota-400">★</span></p><p class="mt-1 text-xs uppercase tracking-widest text-crema/50">En Google</p></div>
+            <div data-a="up"><p class="font-display text-4xl text-crema md:text-5xl">+<span data-count="80">80</span></p><p class="mt-1 text-xs uppercase tracking-widest text-crema/50">Reseñas</p></div>
+            <div data-a="up"><p class="font-display text-4xl text-crema md:text-5xl"><span data-count="7">7</span></p><p class="mt-1 text-xs uppercase tracking-widest text-crema/50">Días a la semana</p></div>
+          </div>
+
+          <ul class="mt-9 grid grid-cols-2 gap-5">
+            <li data-a="up" class="flex gap-3"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-crema/5 text-arena ring-1 ring-crema/10"><i data-lucide="wind" class="h-5 w-5"></i></span><span><strong class="block font-semibold">Ambiente fresco</strong><span class="text-sm text-crema/55">Salón abierto</span></span></li>
+            <li data-a="up" class="flex gap-3"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-crema/5 text-arena ring-1 ring-crema/10"><i data-lucide="paw-print" class="h-5 w-5"></i></span><span><strong class="block font-semibold">Pet friendly</strong><span class="text-sm text-crema/55">Tu mascota es bienvenida</span></span></li>
+            <li data-a="up" class="flex gap-3"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-crema/5 text-arena ring-1 ring-crema/10"><i data-lucide="car" class="h-5 w-5"></i></span><span><strong class="block font-semibold">Parqueadero</strong><span class="text-sm text-crema/55">Propio</span></span></li>
+            <li data-a="up" class="flex gap-3"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-crema/5 text-arena ring-1 ring-crema/10"><i data-lucide="bike" class="h-5 w-5"></i></span><span><strong class="block font-semibold">Domicilios</strong><span class="text-sm text-crema/55">Pide por WhatsApp</span></span></li>
           </ul>
         </div>
       </div>
     </section>
 
     <!-- =====================================================================
-         RESEÑAS · carrusel con scroll-snap (deslizable en móvil)
-         Reseñas reales de clientes en Google. Para añadir más, duplica un <figure>.
+         RESEÑAS · cinta infinita de opiniones reales de Google
          ===================================================================== -->
-    <section id="resenas" class="bg-arena-200 py-20 md:py-28" aria-labelledby="resenas-titulo">
+    <section id="resenas" class="relative overflow-hidden bg-noche py-24 md:py-32" aria-labelledby="resenas-titulo">
       <div class="mx-auto max-w-7xl px-5 md:px-8">
-        <div class="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div class="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <p class="reveal text-xs font-semibold uppercase tracking-ultra text-terracota">Lo que dicen nuestros visitantes</p>
-            <h2 id="resenas-titulo" class="reveal mt-3 font-display text-4xl font-light leading-tight md:text-6xl" data-delay="1">
-              4,7 ★ <em class="italic text-terracota">en Google</em>
+            <p data-a="up" class="text-xs font-semibold uppercase tracking-ultra text-terracota-400">04 — Lo que dicen de nosotros</p>
+            <h2 id="resenas-titulo" class="mt-4 font-display text-[2.6rem] font-light leading-[1.02] md:text-7xl">
+              <span class="line"><span>4,7 ★ <em class="italic text-terracota-400">en Google</em></span></span>
             </h2>
           </div>
-          <div class="reveal flex items-center gap-3" data-delay="2">
-            <button id="prevReview" class="grid h-12 w-12 place-items-center rounded-full border border-tinta/20 transition hover:bg-tinta hover:text-crema" aria-label="Reseña anterior"><i data-lucide="arrow-left" class="h-5 w-5"></i></button>
-            <button id="nextReview" class="grid h-12 w-12 place-items-center rounded-full bg-tinta text-crema transition hover:bg-terracota" aria-label="Siguiente reseña"><i data-lucide="arrow-right" class="h-5 w-5"></i></button>
+          <a data-a="up" href="https://www.google.com/maps/search/?api=1&query=Santos+Sabores+Restaurante+Parrilla+Carmen+de+Apical%C3%A1" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 self-start rounded-full border border-crema/25 px-6 py-3 font-semibold transition-colors hover:border-terracota-400 hover:text-terracota-400 md:self-auto">
+            Ver todas en Google <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Cinta: se pausa al pasar el mouse. Para añadir reseñas, duplica un <figure>. -->
+      <div class="marquee-wrap relative" data-a="fade">
+        <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-noche to-transparent md:w-40"></div>
+        <div class="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-noche to-transparent md:w-40"></div>
+        <div class="marquee pausable" style="--speed: 70s">
+          <div class="marquee-group flex shrink-0 gap-5 pr-5">
+            <figure class="w-[300px] shrink-0 rounded-3xl bg-noche-700 p-7 ring-1 ring-crema/10 md:w-[400px]">
+              <div class="flex gap-1 text-terracota-400" aria-label="5 de 5 estrellas"><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i></div>
+              <blockquote class="mt-5 font-display text-xl leading-snug">“Definitivamente uno de los mejores platos que he probado. Sazón, porciones, pescado en su punto. Excelente servicio.”</blockquote>
+              <figcaption class="mt-6 flex items-center gap-3 text-sm"><span class="grid h-10 w-10 place-items-center rounded-full bg-botanico font-semibold">V</span><span><strong class="block">Viviana Ruiz</strong><span class="text-crema/50">Reseña de Google</span></span></figcaption>
+            </figure>
+            <figure class="w-[300px] shrink-0 rounded-3xl bg-noche-700 p-7 ring-1 ring-crema/10 md:w-[400px]">
+              <div class="flex gap-1 text-terracota-400" aria-label="5 de 5 estrellas"><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i></div>
+              <blockquote class="mt-5 font-display text-xl leading-snug">“El mejor restaurante dentro del Carmen. La comida es excelente y la atención es muy buena. Sin duda el mejor lugar.”</blockquote>
+              <figcaption class="mt-6 flex items-center gap-3 text-sm"><span class="grid h-10 w-10 place-items-center rounded-full bg-terracota font-semibold">C</span><span><strong class="block">Carolina Pachon</strong><span class="text-crema/50">Reseña de Google</span></span></figcaption>
+            </figure>
+            <figure class="w-[300px] shrink-0 rounded-3xl bg-noche-700 p-7 ring-1 ring-crema/10 md:w-[400px]">
+              <div class="flex gap-1 text-terracota-400" aria-label="5 de 5 estrellas"><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i></div>
+              <blockquote class="mt-5 font-display text-xl leading-snug">“La comida deliciosa, se siente la calidad de sus productos. El ambiente tranquilo, espacioso y fresco.”</blockquote>
+              <figcaption class="mt-6 flex items-center gap-3 text-sm"><span class="grid h-10 w-10 place-items-center rounded-full bg-arena-600 font-semibold">S</span><span><strong class="block">Santiago Cifuentes</strong><span class="text-crema/50">Reseña de Google</span></span></figcaption>
+            </figure>
+            <figure class="w-[300px] shrink-0 rounded-3xl bg-noche-700 p-7 ring-1 ring-crema/10 md:w-[400px]">
+              <div class="flex gap-1 text-terracota-400" aria-label="5 de 5 estrellas"><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i></div>
+              <blockquote class="mt-5 font-display text-xl leading-snug">“Es el mejor restaurante en Carmen de Apicalá. La sazón es muy buena. Pet friendly, tiene zona de parqueo propio.”</blockquote>
+              <figcaption class="mt-6 flex items-center gap-3 text-sm"><span class="grid h-10 w-10 place-items-center rounded-full bg-botanico-600 font-semibold">V</span><span><strong class="block">Viviana Marcela Hurtado</strong><span class="text-crema/50">Reseña de Google</span></span></figcaption>
+            </figure>
+            <figure class="w-[300px] shrink-0 rounded-3xl bg-noche-700 p-7 ring-1 ring-crema/10 md:w-[400px]">
+              <div class="flex gap-1 text-terracota-400" aria-label="5 de 5 estrellas"><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i></div>
+              <blockquote class="mt-5 font-display text-xl leading-snug">“Excelente comida, generosa, bien presentada. Un lugar muy agradable en el que sin duda repetiremos.”</blockquote>
+              <figcaption class="mt-6 flex items-center gap-3 text-sm"><span class="grid h-10 w-10 place-items-center rounded-full bg-terracota-700 font-semibold">A</span><span><strong class="block">Aída Devia</strong><span class="text-crema/50">Reseña de Google</span></span></figcaption>
+            </figure>
+            <figure class="w-[300px] shrink-0 rounded-3xl bg-noche-700 p-7 ring-1 ring-crema/10 md:w-[400px]">
+              <div class="flex gap-1 text-terracota-400" aria-label="5 de 5 estrellas"><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i></div>
+              <blockquote class="mt-5 font-display text-xl leading-snug" lang="en">“Amazing taste of Colombian gastronomy. It was my best experience on my trip and holiday. I loved it!”</blockquote>
+              <figcaption class="mt-6 flex items-center gap-3 text-sm"><span class="grid h-10 w-10 place-items-center rounded-full bg-botanico font-semibold">J</span><span><strong class="block">Josué Hernández García</strong><span class="text-crema/50">Reseña de Google</span></span></figcaption>
+            </figure>
           </div>
         </div>
+      </div>
 
-        <div id="reviewTrack" class="snap-row -mx-5 flex gap-5 overflow-x-auto px-5 pb-4 md:-mx-8 md:px-8">
-          <figure class="reveal w-[85%] shrink-0 rounded-3xl bg-crema p-7 shadow-sm sm:w-[60%] lg:w-[32%]">
-            <div class="flex gap-1 text-terracota" aria-label="5 de 5 estrellas">
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i>
-            </div>
-            <blockquote class="mt-5 font-display text-xl leading-snug">“Definitivamente uno de los mejores platos que he probado. Sazón, porciones, pescado en su punto. Excelente servicio.”</blockquote>
-            <figcaption class="mt-6 flex items-center gap-3 text-sm">
-              <span class="grid h-10 w-10 place-items-center rounded-full bg-botanico font-semibold text-crema">V</span>
-              <span><strong class="block">Viviana Ruiz</strong><span class="text-tinta/60">Reseña de Google</span></span>
-            </figcaption>
-          </figure>
-          <figure class="reveal w-[85%] shrink-0 rounded-3xl bg-crema p-7 shadow-sm sm:w-[60%] lg:w-[32%]" data-delay="1">
-            <div class="flex gap-1 text-terracota" aria-label="5 de 5 estrellas">
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i>
-            </div>
-            <blockquote class="mt-5 font-display text-xl leading-snug">“El mejor restaurante dentro del Carmen. La comida es excelente y la atención es muy buena. Sin duda el mejor lugar.”</blockquote>
-            <figcaption class="mt-6 flex items-center gap-3 text-sm">
-              <span class="grid h-10 w-10 place-items-center rounded-full bg-terracota font-semibold text-crema">C</span>
-              <span><strong class="block">Carolina Pachon</strong><span class="text-tinta/60">Reseña de Google</span></span>
-            </figcaption>
-          </figure>
-          <figure class="reveal w-[85%] shrink-0 rounded-3xl bg-crema p-7 shadow-sm sm:w-[60%] lg:w-[32%]" data-delay="2">
-            <div class="flex gap-1 text-terracota" aria-label="5 de 5 estrellas">
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i>
-            </div>
-            <blockquote class="mt-5 font-display text-xl leading-snug">“La comida deliciosa, se siente la calidad de sus productos. El ambiente tranquilo, espacioso y fresco.”</blockquote>
-            <figcaption class="mt-6 flex items-center gap-3 text-sm">
-              <span class="grid h-10 w-10 place-items-center rounded-full bg-arena-600 font-semibold text-crema">S</span>
-              <span><strong class="block">Santiago Cifuentes</strong><span class="text-tinta/60">Reseña de Google</span></span>
-            </figcaption>
-          </figure>
-          <figure class="reveal w-[85%] shrink-0 rounded-3xl bg-crema p-7 shadow-sm sm:w-[60%] lg:w-[32%]" data-delay="3">
-            <div class="flex gap-1 text-terracota" aria-label="5 de 5 estrellas">
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i>
-            </div>
-            <blockquote class="mt-5 font-display text-xl leading-snug">“Es el mejor restaurante en Carmen de Apicalá. La sazón es muy buena. Pet friendly, tiene zona de parqueo propio.”</blockquote>
-            <figcaption class="mt-6 flex items-center gap-3 text-sm">
-              <span class="grid h-10 w-10 place-items-center rounded-full bg-botanico-600 font-semibold text-crema">V</span>
-              <span><strong class="block">Viviana Marcela Hurtado</strong><span class="text-tinta/60">Reseña de Google</span></span>
-            </figcaption>
-          </figure>
-          <figure class="reveal w-[85%] shrink-0 rounded-3xl bg-crema p-7 shadow-sm sm:w-[60%] lg:w-[32%]" data-delay="3">
-            <div class="flex gap-1 text-terracota" aria-label="5 de 5 estrellas">
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i>
-            </div>
-            <blockquote class="mt-5 font-display text-xl leading-snug">“Excelente comida, generosa, bien presentada. Un lugar muy agradable en el que sin duda repetiremos.”</blockquote>
-            <figcaption class="mt-6 flex items-center gap-3 text-sm">
-              <span class="grid h-10 w-10 place-items-center rounded-full bg-terracota-700 font-semibold text-crema">A</span>
-              <span><strong class="block">Aída Devia</strong><span class="text-tinta/60">Reseña de Google</span></span>
-            </figcaption>
-          </figure>
-          <figure class="reveal w-[85%] shrink-0 rounded-3xl bg-crema p-7 shadow-sm sm:w-[60%] lg:w-[32%]" data-delay="3">
-            <div class="flex gap-1 text-terracota" aria-label="5 de 5 estrellas">
-              <i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i>
-            </div>
-            <blockquote class="mt-5 font-display text-xl leading-snug" lang="en">“Amazing taste of Colombian gastronomy. It was my best experience on my trip and holiday. I loved it!”</blockquote>
-            <figcaption class="mt-6 flex items-center gap-3 text-sm">
-              <span class="grid h-10 w-10 place-items-center rounded-full bg-botanico font-semibold text-crema">J</span>
-              <span><strong class="block">Josué Hernández García</strong><span class="text-tinta/60">Reseña de Google</span></span>
-            </figcaption>
-          </figure>
-        </div>
-
-        <!-- Confianza: Google + Restaurant Guru -->
-        <div class="mt-10 grid gap-4 md:grid-cols-2">
-          <a href="https://www.google.com/maps/search/?api=1&query=Santos+Sabores+Restaurante+Parrilla+Carmen+de+Apical%C3%A1" target="_blank" rel="noopener"
-             class="reveal flex items-center justify-between gap-4 rounded-2xl bg-crema p-5 ring-1 ring-arena transition hover:ring-terracota">
-            <span class="flex items-center gap-3">
-              <span class="grid h-11 w-11 place-items-center rounded-full bg-white shadow-sm"><i data-lucide="star" class="h-5 w-5 fill-terracota text-terracota"></i></span>
-              <span class="text-sm"><strong class="block text-base">Lee todas las reseñas en Google</strong>Más de 80 opiniones · deja la tuya después de tu visita</span>
-            </span>
-            <i data-lucide="external-link" class="h-5 w-5 shrink-0 text-tinta/50"></i>
-          </a>
-          <a href="https://es.restaurantguru.com/widget-awards?ODQ2NjY1OTN8ZTVlOWJjYmViYTg4N2RhYzk0MWVjMGNkYTBkMGI4MjY=" target="_blank" rel="noopener"
-             class="reveal flex items-center justify-between gap-4 rounded-2xl bg-botanico p-5 text-crema transition hover:bg-botanico-800" data-delay="1">
-            <span class="flex items-center gap-3">
-              <span class="grid h-11 w-11 place-items-center rounded-full bg-arena text-botanico"><i data-lucide="award" class="h-5 w-5"></i></span>
-              <span class="text-sm"><strong class="block text-base">Recomendado por Restaurant Guru</strong><span class="text-crema/70">Ver nuestro reconocimiento</span></span>
-            </span>
-            <i data-lucide="external-link" class="h-5 w-5 shrink-0 text-crema/60"></i>
-          </a>
-        </div>
+      <!-- Reconocimiento -->
+      <div class="mx-auto mt-14 max-w-7xl px-5 md:px-8">
+        <a data-a="up" href="https://es.restaurantguru.com/widget-awards?ODQ2NjY1OTN8ZTVlOWJjYmViYTg4N2RhYzk0MWVjMGNkYTBkMGI4MjY=" target="_blank" rel="noopener"
+           class="group flex items-center justify-between gap-4 rounded-3xl bg-gradient-to-r from-botanico to-botanico-900 p-6 ring-1 ring-crema/10 transition hover:ring-arena/40 md:p-8">
+          <span class="flex items-center gap-4">
+            <span class="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-arena text-noche transition duration-700 group-hover:rotate-[360deg]"><i data-lucide="award" class="h-7 w-7"></i></span>
+            <span><strong class="block font-display text-2xl font-normal">Recomendado por Restaurant Guru</strong><span class="text-sm text-crema/60">Reconocimiento a nuestra experiencia gastronómica en El Carmen de Apicalá</span></span>
+          </span>
+          <i data-lucide="arrow-up-right" class="h-6 w-6 shrink-0 text-arena transition group-hover:-translate-y-1 group-hover:translate-x-1"></i>
+        </a>
       </div>
     </section>
 
     <!-- =====================================================================
-         PREGUNTAS FRECUENTES · contenido local (ayuda a SEO y buscadores con IA)
+         PREGUNTAS FRECUENTES (SEO local)
          ===================================================================== -->
-    <section class="bg-crema py-20 md:py-24" aria-labelledby="faq-titulo">
+    <section class="bg-carbon py-24 md:py-28" aria-labelledby="faq-titulo">
       <div class="mx-auto grid max-w-7xl gap-10 px-5 md:px-8 lg:grid-cols-12">
         <div class="lg:col-span-4">
-          <p class="reveal text-xs font-semibold uppercase tracking-ultra text-terracota">Antes de venir</p>
-          <h2 id="faq-titulo" class="reveal mt-3 font-display text-4xl font-light leading-tight" data-delay="1">Preguntas frecuentes</h2>
+          <p data-a="up" class="text-xs font-semibold uppercase tracking-ultra text-terracota-400">Antes de venir</p>
+          <h2 id="faq-titulo" class="mt-4 font-display text-4xl font-light leading-tight md:text-5xl"><span class="line"><span>Preguntas frecuentes</span></span></h2>
         </div>
-        <div class="divide-y divide-arena border-y border-arena lg:col-span-8">
-          <details class="reveal group py-5">
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold">¿Dónde comer carne a la parrilla en El Carmen de Apicalá?<i data-lucide="plus" class="faq-icon h-5 w-5 shrink-0 text-terracota transition"></i></summary>
-            <p class="mt-3 leading-relaxed text-tinta/70">En Santos Sabores, Cra. 10 #5-79, Carmen de Apicalá (Tolima); en Google Maps nos encuentras como “Santos Sabores – Restaurante Parrilla”. Preparamos baby beef, costilla, picada y otros cortes a la brasa de carbón, servidos en plancha caliente con papas y ají de la casa.</p>
+        <div class="divide-y divide-crema/10 border-y border-crema/10 lg:col-span-8">
+          <details data-a="up" class="group py-6">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold">¿Dónde comer carne a la parrilla en El Carmen de Apicalá?<i data-lucide="plus" class="faq-icon h-5 w-5 shrink-0 text-terracota-400 transition duration-300"></i></summary>
+            <p class="mt-3 leading-relaxed text-crema/60">En Santos Sabores, Cra. 10 #5-79, Carmen de Apicalá (Tolima); en Google Maps nos encuentras como “Santos Sabores – Restaurante Parrilla”. Preparamos baby beef, costilla, picada y otros cortes al carbón.</p>
           </details>
-          <details class="reveal group py-5">
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold">¿Qué horario tienen? ¿Hacen domicilios?<i data-lucide="plus" class="faq-icon h-5 w-5 shrink-0 text-terracota transition"></i></summary>
-            <p class="mt-3 leading-relaxed text-tinta/70">Atendemos todos los días de 12:00 m. a 5:00 p. m. Y sí, hacemos domicilios en El Carmen de Apicalá: pide por WhatsApp o llama al +57 311 523 9953.</p>
+          <details data-a="up" class="group py-6">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold">¿Qué horario tienen? ¿Hacen domicilios?<i data-lucide="plus" class="faq-icon h-5 w-5 shrink-0 text-terracota-400 transition duration-300"></i></summary>
+            <p class="mt-3 leading-relaxed text-crema/60">Atendemos todos los días de 12:00 m. a 5:00 p. m. Y sí, hacemos domicilios en El Carmen de Apicalá: pide por WhatsApp o llama al +57 311 523 9953.</p>
           </details>
-          <details class="reveal group py-5">
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold">¿Cómo hago una reserva?<i data-lucide="plus" class="faq-icon h-5 w-5 shrink-0 text-terracota transition"></i></summary>
-            <p class="mt-3 leading-relaxed text-tinta/70">Escríbenos por WhatsApp o llámanos al +57 311 523 9953 indicando fecha, hora y número de personas. Recibimos familias, grupos y celebraciones.</p>
+          <details data-a="up" class="group py-6">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold">¿Cómo hago una reserva?<i data-lucide="plus" class="faq-icon h-5 w-5 shrink-0 text-terracota-400 transition duration-300"></i></summary>
+            <p class="mt-3 leading-relaxed text-crema/60">Escríbenos por WhatsApp o llámanos al +57 311 523 9953 con fecha, hora y número de personas. Recibimos familias, grupos y celebraciones.</p>
           </details>
-          <details class="reveal group py-5">
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold">¿Puedo ir con mi mascota? ¿Hay parqueadero?<i data-lucide="plus" class="faq-icon h-5 w-5 shrink-0 text-terracota transition"></i></summary>
-            <p class="mt-3 leading-relaxed text-tinta/70">Sí a las dos: somos pet friendly y tenemos parqueadero propio para que llegues tranquilo.</p>
+          <details data-a="up" class="group py-6">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-semibold">¿Puedo ir con mi mascota? ¿Hay parqueadero?<i data-lucide="plus" class="faq-icon h-5 w-5 shrink-0 text-terracota-400 transition duration-300"></i></summary>
+            <p class="mt-3 leading-relaxed text-crema/60">Sí a las dos: somos pet friendly y tenemos parqueadero propio para que llegues tranquilo.</p>
           </details>
         </div>
       </div>
     </section>
 
     <!-- =====================================================================
-         CONTACTO Y UBICACIÓN · horarios, dirección, mapa estético, CTA
-         
+         CONTACTO Y UBICACIÓN
          ===================================================================== -->
-    <section id="contacto" class="grain relative overflow-hidden bg-botanico-900 py-20 text-crema md:py-28" aria-labelledby="contacto-titulo">
-      <div class="mx-auto grid max-w-7xl gap-12 px-5 md:px-8 lg:grid-cols-2 lg:gap-16">
-
+    <section id="contacto" class="relative overflow-hidden bg-noche py-24 md:py-32" aria-labelledby="contacto-titulo">
+      <div class="pointer-events-none absolute -left-40 top-20 h-[420px] w-[420px] rounded-full bg-botanico/40 blur-[120px]" aria-hidden="true"></div>
+      <div class="relative mx-auto grid max-w-7xl gap-14 px-5 md:px-8 lg:grid-cols-2 lg:gap-16">
         <div>
-          <p class="reveal text-xs font-semibold uppercase tracking-ultra text-arena">Visítanos</p>
-          <h2 id="contacto-titulo" class="reveal mt-3 font-display text-4xl font-light leading-tight md:text-6xl" data-delay="1">
-            Te esperamos en <em class="italic text-terracota-400">El Carmen de Apicalá</em>
+          <p data-a="up" class="text-xs font-semibold uppercase tracking-ultra text-arena">05 — Visítanos</p>
+          <h2 id="contacto-titulo" class="mt-4 font-display text-[2.4rem] font-light leading-[1.05] md:text-6xl">
+            <span class="line"><span>Te esperamos en</span></span>
+            <span class="line"><span><em class="italic text-terracota-400">El Carmen de Apicalá</em></span></span>
           </h2>
 
-          <!-- address = marcado semántico de contacto -->
           <address class="mt-10 space-y-7 not-italic">
-            <div class="reveal flex gap-4">
-              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-crema/10 text-arena"><i data-lucide="map-pin" class="h-5 w-5"></i></span>
-              <div><p class="text-xs uppercase tracking-widest text-arena/70">Dirección</p><p class="mt-1 text-lg">Cra. 10 #5-79<br />Carmen de Apicalá, Tolima, Colombia</p><p class="mt-1 text-sm text-crema/60">Usa el botón “Cómo llegar”: te lleva directo con Google Maps.</p></div>
+            <div data-a="up" class="flex gap-4">
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-crema/5 text-arena ring-1 ring-crema/10"><i data-lucide="map-pin" class="h-5 w-5"></i></span>
+              <div><p class="text-xs uppercase tracking-widest text-arena/70">Dirección</p><p class="mt-1 text-lg">Cra. 10 #5-79<br />Carmen de Apicalá, Tolima, Colombia</p><p class="mt-1 text-sm text-crema/50">Usa el botón “Cómo llegar”: te lleva directo con Google Maps.</p></div>
             </div>
-            <div class="reveal flex gap-4" data-delay="1">
-              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-crema/10 text-arena"><i data-lucide="clock" class="h-5 w-5"></i></span>
+            <div data-a="up" class="flex gap-4">
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-crema/5 text-arena ring-1 ring-crema/10"><i data-lucide="clock" class="h-5 w-5"></i></span>
               <div>
                 <p class="text-xs uppercase tracking-widest text-arena/70">Horario</p>
                 <p class="mt-1 text-lg">Todos los días · 12:00 m. – 5:00 p. m.</p>
-                <p id="openStatus" class="mt-2 inline-flex items-center gap-2 rounded-full bg-crema/10 px-3 py-1 text-xs font-semibold"></p>
+                <p id="openStatus" class="mt-2 inline-flex items-center gap-2 rounded-full bg-crema/5 px-3 py-1 text-xs font-semibold ring-1 ring-crema/10">Todos los días de 12 a 5 p. m.</p>
               </div>
             </div>
-            <div class="reveal flex gap-4" data-delay="2">
-              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-crema/10 text-arena"><i data-lucide="phone" class="h-5 w-5"></i></span>
-              <div><p class="text-xs uppercase tracking-widest text-arena/70">Teléfono, WhatsApp y domicilios</p><a href="tel:+573115239953" class="mt-1 block text-lg hover:text-arena">+57 311 523 9953</a></div>
+            <div data-a="up" class="flex gap-4">
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-crema/5 text-arena ring-1 ring-crema/10"><i data-lucide="phone" class="h-5 w-5"></i></span>
+              <div><p class="text-xs uppercase tracking-widest text-arena/70">Teléfono, WhatsApp y domicilios</p><a href="tel:+573115239953" class="mt-1 block text-lg transition hover:text-terracota-400">+57 311 523 9953</a></div>
+            </div>
+            <div data-a="up" class="flex gap-4">
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-crema/5 text-arena ring-1 ring-crema/10"><i data-lucide="instagram" class="h-5 w-5"></i></span>
+              <div><p class="text-xs uppercase tracking-widest text-arena/70">Instagram</p><a href="https://www.instagram.com/rest_santos.sabores/" target="_blank" rel="noopener" class="mt-1 block text-lg transition hover:text-terracota-400">@rest_santos.sabores</a></div>
             </div>
           </address>
 
-          <div class="reveal mt-10 flex flex-col gap-3 sm:flex-row" data-delay="2">
-            <a href="https://wa.me/573115239953?text=Hola%20Santos%20Sabores%2C%20quiero%20reservar%20una%20mesa" target="_blank" rel="noopener"
-               class="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 font-semibold text-tinta transition hover:brightness-110">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.23-9.43 9.44-9.43a9.38 9.38 0 0 1 9.43 9.44c0 5.2-4.24 9.43-9.44 9.43zm8.03-17.46A11.27 11.27 0 0 0 12.05.72C5.8.72.7 5.8.7 12.07c0 2 .52 3.95 1.52 5.67L.6 23.65l6.05-1.59a11.3 11.3 0 0 0 5.4 1.38h.01c6.25 0 11.35-5.09 11.35-11.36 0-3.03-1.18-5.88-3.33-8.03z"/></svg>
+          <div data-a="up" class="mt-10 flex flex-col gap-3 sm:flex-row">
+            <a href="https://wa.me/573115239953?text=Hola%20Santos%20Sabores%2C%20quiero%20reservar%20una%20mesa" target="_blank" rel="noopener" data-magnetic
+               class="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 font-semibold text-noche transition hover:brightness-110">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
               Escribir por WhatsApp
             </a>
-            <a href="tel:+573115239953" class="inline-flex items-center justify-center gap-2 rounded-full border border-crema/30 px-7 py-4 font-semibold transition hover:bg-crema hover:text-tinta">
+            <a href="tel:+573115239953" data-magnetic class="inline-flex items-center justify-center gap-2 rounded-full border border-crema/25 px-7 py-4 font-semibold transition-colors hover:bg-crema hover:text-noche">
               <i data-lucide="phone-call" class="h-5 w-5"></i> Llamar ahora
             </a>
           </div>
         </div>
 
-        <!-- Mapa simulado (SVG ilustrado) → abre Google Maps al tocar -->
-        <a href="https://www.google.com/maps/search/?api=1&query=Santos+Sabores+Restaurante+Parrilla+Carmen+de+Apical%C3%A1" target="_blank" rel="noopener"
-           class="reveal group relative block min-h-[360px] overflow-hidden rounded-[2rem] bg-[#22402F] ring-1 ring-crema/10 lg:min-h-full" data-delay="1"
+        <!-- Mapa ilustrado (SVG) → abre la ficha de Google Maps -->
+        <a data-a="clip" href="https://www.google.com/maps/search/?api=1&query=Santos+Sabores+Restaurante+Parrilla+Carmen+de+Apical%C3%A1" target="_blank" rel="noopener"
+           class="group relative block min-h-[380px] overflow-hidden rounded-[2rem] bg-[#101A15] ring-1 ring-crema/10 lg:min-h-full"
            aria-label="Abrir la ubicación de Santos Sabores en Google Maps">
           <svg class="absolute inset-0 h-full w-full" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <defs>
-              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#2E5443" stroke-width="1"/></pattern>
-            </defs>
+            <defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#1B2A22" stroke-width="1"/></pattern></defs>
             <rect width="600" height="600" fill="url(#grid)"/>
-            <!-- zonas verdes -->
-            <circle cx="110" cy="120" r="70" fill="#2E5443" opacity=".7"/>
-            <circle cx="500" cy="470" r="95" fill="#2E5443" opacity=".6"/>
-            <path d="M420 60c50 10 120 40 140 90s-30 70-80 60-90-40-100-80 10-75 40-70z" fill="#2E5443" opacity=".5"/>
-            <!-- río / quebrada -->
-            <path d="M-10 520C80 470 140 520 230 480S380 380 470 400 600 360 620 330" fill="none" stroke="#6E9C8A" stroke-width="10" stroke-linecap="round" opacity=".45"/>
-            <!-- calles -->
-            <g stroke="#E6D3B3" stroke-linecap="round" opacity=".55">
-              <path d="M0 300H600" stroke-width="14"/>
-              <path d="M300 0V600" stroke-width="14"/>
-              <path d="M0 180H600M0 420H600" stroke-width="6"/>
-              <path d="M170 0V600M440 0V600" stroke-width="6"/>
-              <path d="M40 600L560 40" stroke-width="4" opacity=".6"/>
+            <circle cx="110" cy="120" r="70" fill="#1F3A2E" opacity=".7"/>
+            <circle cx="500" cy="470" r="95" fill="#1F3A2E" opacity=".6"/>
+            <path d="M420 60c50 10 120 40 140 90s-30 70-80 60-90-40-100-80 10-75 40-70z" fill="#1F3A2E" opacity=".5"/>
+            <path d="M-10 520C80 470 140 520 230 480S380 380 470 400 600 360 620 330" fill="none" stroke="#3F6B58" stroke-width="10" stroke-linecap="round" opacity=".6"/>
+            <g stroke="#E2CBA4" stroke-linecap="round" opacity=".28">
+              <path d="M0 300H600" stroke-width="14"/><path d="M300 0V600" stroke-width="14"/>
+              <path d="M0 180H600M0 420H600" stroke-width="6"/><path d="M170 0V600M440 0V600" stroke-width="6"/>
+              <path d="M40 600L560 40" stroke-width="4"/>
             </g>
-            <!-- etiquetas -->
-            <g fill="#E6D3B3" font-family="Manrope, sans-serif" font-size="13" font-weight="600" letter-spacing="2" opacity=".75">
-              <text x="312" y="40">CRA. 10</text>
-              <text x="24" y="292">CALLE 5</text>            </g>
-            <!-- radar del pin -->
-            <circle cx="300" cy="300" r="80" fill="#C4683F" opacity=".12"/>
-            <circle cx="300" cy="300" r="44" fill="#C4683F" opacity=".22"/>
+            <!-- Ruta animada hacia el pin -->
+            <path d="M40 600 L170 470 L170 300 L300 300" fill="none" stroke="#E08A5F" stroke-width="4" stroke-dasharray="10 10" stroke-linecap="round">
+              <animate attributeName="stroke-dashoffset" from="200" to="0" dur="4s" repeatCount="indefinite"/>
+            </path>
+            <g fill="#E2CBA4" font-family="Manrope, sans-serif" font-size="13" font-weight="600" letter-spacing="2" opacity=".6">
+              <text x="312" y="40">CRA. 10</text><text x="24" y="292">CALLE 5</text>
+            </g>
+            <circle cx="300" cy="300" r="70" fill="#C9693F" opacity=".1"><animate attributeName="r" values="30;90;30" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".35;0;.35" dur="3s" repeatCount="indefinite"/></circle>
           </svg>
-
-          <!-- Pin -->
-          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-full transition duration-500 group-hover:-translate-y-[110%]">
-            <div class="grid h-14 w-14 place-items-center rounded-full rounded-br-none bg-terracota shadow-2xl ring-4 ring-crema [transform:rotate(45deg)]">
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-full transition duration-500 group-hover:-translate-y-[115%]">
+            <div class="grid h-14 w-14 place-items-center rounded-full rounded-br-none bg-terracota shadow-2xl shadow-terracota/40 ring-4 ring-noche [transform:rotate(45deg)]">
               <i data-lucide="flame" class="h-6 w-6 -rotate-45 text-crema"></i>
             </div>
           </div>
-
-          <!-- Tarjeta inferior -->
-          <div class="absolute inset-x-4 bottom-4 flex items-center justify-between gap-4 rounded-2xl bg-crema p-4 text-tinta shadow-xl md:inset-x-6 md:bottom-6">
-            <div>
-              <p class="font-display text-lg leading-tight">Santos Sabores</p>
-              <p class="text-sm text-tinta/60">Cra. 10 #5-79 · Carmen de Apicalá</p>
-            </div>
-            <span class="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-botanico px-4 py-2.5 text-sm font-semibold text-crema transition group-hover:bg-terracota">
+          <div class="absolute inset-x-4 bottom-4 flex items-center justify-between gap-4 rounded-2xl bg-crema p-4 text-noche shadow-xl md:inset-x-6 md:bottom-6">
+            <div><p class="font-display text-lg leading-tight">Santos Sabores</p><p class="text-sm text-noche/60">Cra. 10 #5-79 · Carmen de Apicalá</p></div>
+            <span class="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-noche px-4 py-2.5 text-sm font-semibold text-crema transition group-hover:bg-terracota">
               <i data-lucide="navigation" class="h-4 w-4"></i> Cómo llegar
             </span>
           </div>
@@ -691,106 +791,206 @@
   <!-- =====================================================================
        FOOTER
        ===================================================================== -->
-  <footer class="bg-tinta pb-28 pt-16 text-crema/70 md:pb-12">
-    <div class="mx-auto grid max-w-7xl gap-10 px-5 md:grid-cols-4 md:px-8">
+  <footer class="relative overflow-hidden bg-carbon pb-28 pt-20 text-crema/60 md:pb-10">
+    <div class="mx-auto grid max-w-7xl gap-12 px-5 md:grid-cols-4 md:px-8">
       <div class="md:col-span-2">
-        <p class="font-display text-3xl text-crema">Santos Sabores</p>
-        <p class="mt-3 max-w-sm text-sm leading-relaxed">Restaurante parrilla y cocina tolimense en El Carmen de Apicalá, Tolima. Todos los días de 12 a 5 p. m. Domicilios, pet friendly y con parqueadero propio.</p>
+        <img src="img/logo-santos-sabores.webp" width="592" height="334" alt="Santos Sabores Parrilla & Cocina" loading="lazy" class="h-16 w-auto" />
+        <p class="mt-5 max-w-sm text-sm leading-relaxed">Restaurante parrilla y cocina colombiana en El Carmen de Apicalá, Tolima. Todos los días de 12 a 5 p. m. Domicilios, pet friendly y parqueadero propio.</p>
       </div>
       <nav aria-label="Pie de página">
         <p class="text-xs font-semibold uppercase tracking-ultra text-arena">Explorar</p>
         <ul class="mt-4 space-y-2 text-sm">
-          <li><a href="#menu" class="hover:text-crema">Menú</a></li>
-          <li><a href="#esencia" class="hover:text-crema">El lugar</a></li>
-          <li><a href="#resenas" class="hover:text-crema">Reseñas</a></li>
-          <li><a href="#contacto" class="hover:text-crema">Ubicación</a></li>
+          <li><a href="#especialidades" class="transition hover:text-crema">Especialidades</a></li>
+          <li><a href="#carta" class="transition hover:text-crema">Carta</a></li>
+          <li><a href="#esencia" class="transition hover:text-crema">El lugar</a></li>
+          <li><a href="#resenas" class="transition hover:text-crema">Reseñas</a></li>
+          <li><a href="#contacto" class="transition hover:text-crema">Ubicación</a></li>
         </ul>
       </nav>
       <div>
         <p class="text-xs font-semibold uppercase tracking-ultra text-arena">Contacto</p>
         <ul class="mt-4 space-y-2 text-sm">
-          <li><a href="tel:+573115239953" class="hover:text-crema">+57 311 523 9953</a></li>
-          <li><a href="https://wa.me/573115239953" target="_blank" rel="noopener" class="hover:text-crema">WhatsApp y domicilios</a></li>
+          <li><a href="tel:+573115239953" class="transition hover:text-crema">+57 311 523 9953</a></li>
+          <li><a href="https://wa.me/573115239953" target="_blank" rel="noopener" class="transition hover:text-crema">WhatsApp y domicilios</a></li>
+          <li><a href="https://www.instagram.com/rest_santos.sabores/" target="_blank" rel="noopener" class="transition hover:text-crema">Instagram @rest_santos.sabores</a></li>
           <li>Cra. 10 #5-79, Carmen de Apicalá</li>
-          <li><a href="https://www.instagram.com/rest_santos.sabores/" target="_blank" rel="noopener" class="hover:text-crema">Instagram @rest_santos.sabores</a></li>
         </ul>
       </div>
     </div>
-    <div class="mx-auto mt-12 flex max-w-7xl flex-col gap-2 border-t border-crema/10 px-5 pt-6 text-xs md:flex-row md:justify-between md:px-8">
+    <!-- Nombre gigante -->
+    <p class="pointer-events-none mt-16 select-none whitespace-nowrap text-center font-display text-[16vw] font-light leading-[.85] text-crema/[.05]" aria-hidden="true">Santos Sabores</p>
+    <div class="mx-auto flex max-w-7xl flex-col gap-2 border-t border-crema/10 px-5 pt-6 text-xs md:flex-row md:justify-between md:px-8">
       <p>© <span id="year">2026</span> Santos Sabores · Restaurante Parrilla. Todos los derechos reservados.</p>
       <p>El Carmen de Apicalá, Tolima, Colombia</p>
     </div>
   </footer>
 
-  <!-- =====================================================================
-       BOTÓN FLOTANTE DE WHATSAPP (permanente)
-       ===================================================================== -->
+  <!-- Ícono de WhatsApp reutilizable -->
+  <svg width="0" height="0" class="absolute" aria-hidden="true"><symbol id="wa-icon" viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.23-9.43 9.44-9.43a9.38 9.38 0 0 1 9.43 9.44c0 5.2-4.24 9.43-9.44 9.43zm8.03-17.46A11.27 11.27 0 0 0 12.05.72C5.8.72.7 5.8.7 12.07c0 2 .52 3.95 1.52 5.67L.6 23.65l6.05-1.59a11.3 11.3 0 0 0 5.4 1.38h.01c6.25 0 11.35-5.09 11.35-11.36 0-3.03-1.18-5.88-3.33-8.03z"/></symbol></svg>
+
+  <!-- Botón flotante de WhatsApp -->
   <a href="https://wa.me/573115239953?text=Hola%20Santos%20Sabores%2C%20quiero%20hacer%20un%20domicilio%20o%20una%20reserva" target="_blank" rel="noopener"
-     class="fixed bottom-5 right-5 z-50 grid h-16 w-16 place-items-center rounded-full bg-[#25D366] text-white shadow-2xl shadow-black/30 transition hover:scale-105"
-     style="margin-bottom: env(safe-area-inset-bottom)"
-     aria-label="Escríbenos por WhatsApp para pedidos y reservas">
+     class="fixed bottom-5 right-5 z-50 grid h-16 w-16 place-items-center rounded-full bg-[#25D366] text-white shadow-2xl shadow-black/50 transition hover:scale-105"
+     style="margin-bottom: env(safe-area-inset-bottom)" aria-label="Escríbenos por WhatsApp para domicilios y reservas">
     <span class="wa-ping absolute inset-0 rounded-full bg-[#25D366]"></span>
-    <svg class="relative h-8 w-8" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.23-9.43 9.44-9.43a9.38 9.38 0 0 1 9.43 9.44c0 5.2-4.24 9.43-9.44 9.43zm8.03-17.46A11.27 11.27 0 0 0 12.05.72C5.8.72.7 5.8.7 12.07c0 2 .52 3.95 1.52 5.67L.6 23.65l6.05-1.59a11.3 11.3 0 0 0 5.4 1.38h.01c6.25 0 11.35-5.09 11.35-11.36 0-3.03-1.18-5.88-3.33-8.03z"/></svg>
+    <svg class="relative h-8 w-8" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
   </a>
 
   <!-- ===================== SCRIPTS ===================== -->
   <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
-    // 1) Iconos Lucide
+  (() => {
+    const $ = (s, c = document) => c.querySelector(s);
+    const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    // 1) Iconos
     if (window.lucide) lucide.createIcons();
 
-    // 2) Header: fondo sólido al hacer scroll
-    const header = document.getElementById('header');
-    const onScroll = () => {
-      const solid = window.scrollY > 40;
-      header.classList.toggle('bg-botanico-900/90', solid);
-      header.classList.toggle('backdrop-blur-md', solid);
-      header.classList.toggle('shadow-lg', solid);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    // 2) Duplicar contenido de marquesinas para loop continuo
+    $$('.marquee').forEach(m => { const g = $('.marquee-group', m); const c = g.cloneNode(true); c.setAttribute('aria-hidden', 'true'); m.appendChild(c); });
 
-    // 3) Menú móvil
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const toggleMenu = (open) => {
+    // 3) Header sólido al hacer scroll + barra de progreso
+    const header = $('#header'), progress = $('#progress');
+    const onScroll = () => {
+      const y = scrollY, solid = y > 40;
+      header.classList.toggle('bg-noche/80', solid);
+      header.classList.toggle('backdrop-blur-xl', solid);
+      header.classList.toggle('shadow-[0_1px_0_rgba(244,236,223,.08)]', solid);
+      const max = document.documentElement.scrollHeight - innerHeight;
+      progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+    };
+    addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+    // 4) Menú móvil
+    const menuBtn = $('#menuBtn'), mobileMenu = $('#mobileMenu'), bars = $$('.burger', menuBtn);
+    const toggleMenu = open => {
       menuBtn.setAttribute('aria-expanded', open);
       menuBtn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
       mobileMenu.classList.toggle('opacity-0', !open);
       mobileMenu.classList.toggle('pointer-events-none', !open);
+      bars[0].style.transform = open ? 'rotate(45deg)' : '';
+      bars[1].style.transform = open ? 'rotate(-45deg)' : '';
       document.body.style.overflow = open ? 'hidden' : '';
+      if (open && window.gsap && !reduce) gsap.from($$('.m-link', mobileMenu), { y: 40, opacity: 0, stagger: .06, duration: .7, ease: 'power3.out' });
     };
     menuBtn.addEventListener('click', () => toggleMenu(menuBtn.getAttribute('aria-expanded') !== 'true'));
-    mobileMenu.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+    $$('[data-close]', mobileMenu).forEach(a => a.addEventListener('click', () => toggleMenu(false)));
 
-    // 4) Animación de aparición al hacer scroll
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-    // 5) Carrusel de reseñas (flechas)
-    const track = document.getElementById('reviewTrack');
-    const step = () => (track.firstElementChild?.getBoundingClientRect().width || 300) + 20;
-    document.getElementById('nextReview').addEventListener('click', () => {
-      const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 5;
-      track.scrollTo({ left: atEnd ? 0 : track.scrollLeft + step(), behavior: 'smooth' });
+    // 5) Carta: pestañas con píldora animada + navegación con flechas
+    const tabs = $$('[role="tab"]'), pill = $('#tabPill'), tabRow = $('.tab-row');
+    const movePill = t => { pill.style.width = t.offsetWidth + 'px'; pill.style.transform = `translateX(${t.offsetLeft}px)`; };
+    const selectTab = (t, focus) => {
+      tabs.forEach(x => { const on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; $('#' + x.getAttribute('aria-controls')).hidden = !on; });
+      movePill(t);
+      if (focus) t.focus();
+      // centra la pestaña dentro de la fila (sin mover la página)
+      tabRow.scrollTo({ left: t.offsetLeft - tabRow.clientWidth / 2 + t.offsetWidth / 2, behavior: reduce ? 'auto' : 'smooth' });
+      const panel = $('#' + t.getAttribute('aria-controls'));
+      if (window.gsap && !reduce) gsap.fromTo($$('.menu-item', panel), { y: 24, opacity: 0 }, { y: 0, opacity: 1, stagger: .06, duration: .6, ease: 'power3.out' });
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => selectTab(t));
+      t.addEventListener('keydown', e => {
+        const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (d) { e.preventDefault(); selectTab(tabs[(i + d + tabs.length) % tabs.length], true); }
+      });
     });
-    document.getElementById('prevReview').addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    const initPill = () => movePill(tabs.find(t => t.getAttribute('aria-selected') === 'true'));
+    initPill(); addEventListener('resize', initPill); if (document.fonts) document.fonts.ready.then(initPill);
 
-
-    // 6) Indicador "Abierto ahora" (hora de Colombia). Horario: todos los días 12:00–17:00
+    // 6) "Abierto ahora" (hora de Colombia). Horario: todos los días 12:00–17:00
     (() => {
       const OPEN = 12, CLOSE = 17;
       const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Bogota' }));
-      const h = now.getHours() + now.getMinutes() / 60;
-      const open = h >= OPEN && h < CLOSE;
-      const el = document.getElementById('openStatus');
-      el.innerHTML = `<span class="h-2 w-2 rounded-full ${open ? 'bg-[#25D366]' : 'bg-terracota-400'}"></span>${open ? 'Abierto ahora' : 'Cerrado ahora · abrimos a las 12:00 m.'}`;
+      const h = now.getHours() + now.getMinutes() / 60, open = h >= OPEN && h < CLOSE;
+      $('#openStatus').innerHTML = `<span class="h-2 w-2 rounded-full ${open ? 'bg-[#25D366] animate-pulse' : 'bg-terracota-400'}"></span>${open ? 'Abierto ahora · hasta las 5:00 p. m.' : 'Cerrado ahora · abrimos a las 12:00 m.'}`;
     })();
 
-    // 7) Año dinámico en el footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // 7) Año del footer
+    $('#year').textContent = new Date().getFullYear();
+
+    // 8) Brasas: partículas que suben en el hero (se pausa fuera de pantalla)
+    (() => {
+      const cv = $('#embers'); if (!cv || reduce) return;
+      const ctx = cv.getContext('2d'); let w, h, parts = [], running = true;
+      const resize = () => { const dpr = Math.min(devicePixelRatio || 1, 2); w = cv.offsetWidth; h = cv.offsetHeight; cv.width = w * dpr; cv.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+      const spawn = init => ({ x: Math.random() * w, y: init ? Math.random() * h : h + 10, r: Math.random() * 2 + .6, vy: Math.random() * .7 + .35, vx: (Math.random() - .5) * .3, life: 0, max: Math.random() * 300 + 200, ph: Math.random() * 6.28 });
+      resize(); addEventListener('resize', resize);
+      const N = innerWidth < 768 ? 34 : 70; for (let i = 0; i < N; i++) parts.push(spawn(true));
+      const tick = () => {
+        if (!running) return;
+        ctx.clearRect(0, 0, w, h); ctx.globalCompositeOperation = 'lighter';
+        parts.forEach((p, i) => {
+          p.life++; p.y -= p.vy; p.x += p.vx + Math.sin(p.life / 30 + p.ph) * .35;
+          const a = Math.max(0, Math.sin(Math.PI * p.life / p.max));
+          const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 6);
+          g.addColorStop(0, `rgba(255,190,120,${.9 * a})`); g.addColorStop(.35, `rgba(224,110,60,${.45 * a})`); g.addColorStop(1, 'rgba(224,110,60,0)');
+          ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 6, 0, 6.283); ctx.fill();
+          if (p.life > p.max || p.y < -20) parts[i] = spawn(false);
+        });
+        requestAnimationFrame(tick);
+      };
+      new IntersectionObserver(([e]) => { const was = running; running = e.isIntersecting; if (running && !was) tick(); }).observe(cv);
+      tick();
+    })();
+
+    // 9) Cursor personalizado + botones magnéticos + brillo en tarjetas (solo mouse)
+    if (finePointer && !reduce) {
+      document.documentElement.classList.add('has-cursor');
+      const cur = $('.cursor'), dot = $('.cursor-dot'); let cx = innerWidth / 2, cy = innerHeight / 2, tx = cx, ty = cy;
+      addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; dot.style.transform = `translate(${tx}px,${ty}px)`; });
+      (function loop() { cx += (tx - cx) * .18; cy += (ty - cy) * .18; cur.style.transform = `translate(${cx}px,${cy}px)`; requestAnimationFrame(loop); })();
+      $$('a, button, summary').forEach(el => { el.addEventListener('mouseenter', () => cur.classList.add('is-hover')); el.addEventListener('mouseleave', () => cur.classList.remove('is-hover')); });
+      $$('[data-magnetic]').forEach(el => {
+        el.addEventListener('mousemove', e => { const r = el.getBoundingClientRect(); el.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .25}px,${(e.clientY - r.top - r.height / 2) * .35}px)`; });
+        el.addEventListener('mouseleave', () => { el.style.transition = 'transform .5s cubic-bezier(.2,.8,.2,1)'; el.style.transform = ''; setTimeout(() => el.style.transition = '', 500); });
+      });
+      $$('.glow-card').forEach(c => c.addEventListener('mousemove', e => { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); }));
+    }
+
+    // 10) Animaciones con GSAP + ScrollTrigger
+    if (!window.gsap || !window.ScrollTrigger || reduce) { document.documentElement.classList.add('no-anim'); return; }
+    gsap.registerPlugin(ScrollTrigger);
+    const ease = 'power4.out';
+
+    // Hero: entrada por líneas, zoom de imagen y textos
+    gsap.timeline({ defaults: { ease } })
+      .to('#heroImg', { scale: 1, duration: 2.2, ease: 'power2.out' }, 0)
+      .to('#inicio .line > span', { y: 0, duration: 1.3, stagger: .12 }, .15)
+      .fromTo('#inicio .hero-in', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 1, stagger: .12 }, .55);
+    // Hero: parallax al hacer scroll
+    gsap.to('#heroImg', { yPercent: 14, ease: 'none', scrollTrigger: { trigger: '#inicio', start: 'top top', end: 'bottom top', scrub: true } });
+
+    // Títulos de secciones: líneas que suben
+    $$('section:not(#inicio) h2').forEach(h2 => {
+      const spans = $$('.line > span', h2); if (!spans.length) return;
+      gsap.to(spans, { y: 0, duration: 1.2, stagger: .1, ease, scrollTrigger: { trigger: h2, start: 'top 88%' } });
+    });
+
+    // Aparición hacia arriba (en lotes)
+    ScrollTrigger.batch('[data-a="up"]', { start: 'top 90%', onEnter: els => gsap.fromTo(els, { y: 36, opacity: 0 }, { y: 0, opacity: 1, duration: 1, stagger: .08, ease, overwrite: true }) });
+    ScrollTrigger.batch('[data-a="fade"]:not(.hero-in)', { start: 'top 92%', onEnter: els => gsap.to(els, { opacity: 1, duration: 1.2, ease: 'power2.out' }) });
+
+    // Tarjetas: aparición con leve giro 3D
+    ScrollTrigger.batch('[data-a="card"]', { start: 'top 88%', onEnter: els => gsap.fromTo(els, { y: 80, opacity: 0, rotateX: -12, transformPerspective: 900 }, { y: 0, opacity: 1, rotateX: 0, duration: 1.3, stagger: .12, ease, clearProps: 'transform' }) });
+
+    // Imágenes con revelado tipo cortina
+    $$('[data-a="clip"]').forEach(el => gsap.fromTo(el, { clipPath: 'inset(100% 0% 0% 0%)', opacity: 1 }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.5, ease: 'power3.inOut', scrollTrigger: { trigger: el, start: 'top 85%' }, clearProps: 'clipPath' }));
+
+    // Parallax genérico
+    $$('[data-parallax]').forEach(el => gsap.to(el, { yPercent: parseFloat(el.dataset.parallax), ease: 'none', scrollTrigger: { trigger: el.closest('section') || el, start: 'top bottom', end: 'bottom top', scrub: true } }));
+    $$('[data-parallax-img]').forEach(img => gsap.fromTo(img, { yPercent: -7 }, { yPercent: 7, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }));
+
+    // Contadores
+    $$('[data-count]').forEach(el => {
+      const end = parseFloat(el.dataset.count), dec = +(el.dataset.decimals || 0), o = { v: 0 };
+      gsap.to(o, { v: end, duration: 2, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 90%' }, onUpdate: () => { el.textContent = o.v.toFixed(dec).replace('.', ','); } });
+    });
+  })();
   </script>
 </body>
 </html>
