@@ -117,9 +117,6 @@
         { "@type": "MenuSection", "name": "Platos Típicos", "hasMenuItem": [
           { "@type": "MenuItem", "name": "Bandeja Paisa" }, { "@type": "MenuItem", "name": "Almuerzo del Día" },
           { "@type": "MenuItem", "name": "Chicharrón con Yuca" }, { "@type": "MenuItem", "name": "Pollo Asado" } ] },
-        { "@type": "MenuSection", "name": "Desayunos", "hasMenuItem": [
-          { "@type": "MenuItem", "name": "Calentado Santandereano" }, { "@type": "MenuItem", "name": "Huevos al Gusto" },
-          { "@type": "MenuItem", "name": "Changua" }, { "@type": "MenuItem", "name": "Desayuno Campesino" } ] },
         { "@type": "MenuSection", "name": "Bebidas", "hasMenuItem": [
           { "@type": "MenuItem", "name": "Jugos Naturales" }, { "@type": "MenuItem", "name": "Limonada de Coco" },
           { "@type": "MenuItem", "name": "Tinto & Aromática" }, { "@type": "MenuItem", "name": "Refrescos & Agua" } ] }
@@ -479,8 +476,7 @@
             <button role="tab" class="tab relative z-10 rounded-full px-5 py-2.5 text-sm font-semibold text-crema/70 transition-colors" aria-selected="false" aria-controls="cat-parrilla" id="t-parrilla" tabindex="-1"><span class="mr-1.5 text-[10px] opacity-60">02</span>Parrilla</button>
             <button role="tab" class="tab relative z-10 rounded-full px-5 py-2.5 text-sm font-semibold text-crema/70 transition-colors" aria-selected="false" aria-controls="cat-pescados" id="t-pescados" tabindex="-1"><span class="mr-1.5 text-[10px] opacity-60">03</span>Pescados &amp; Mariscos</button>
             <button role="tab" class="tab relative z-10 rounded-full px-5 py-2.5 text-sm font-semibold text-crema/70 transition-colors" aria-selected="false" aria-controls="cat-tipicos" id="t-tipicos" tabindex="-1"><span class="mr-1.5 text-[10px] opacity-60">04</span>Platos Típicos</button>
-            <button role="tab" class="tab relative z-10 rounded-full px-5 py-2.5 text-sm font-semibold text-crema/70 transition-colors" aria-selected="false" aria-controls="cat-desayunos" id="t-desayunos" tabindex="-1"><span class="mr-1.5 text-[10px] opacity-60">05</span>Desayunos</button>
-            <button role="tab" class="tab relative z-10 rounded-full px-5 py-2.5 text-sm font-semibold text-crema/70 transition-colors" aria-selected="false" aria-controls="cat-bebidas" id="t-bebidas" tabindex="-1"><span class="mr-1.5 text-[10px] opacity-60">06</span>Bebidas</button>
+            <button role="tab" class="tab relative z-10 rounded-full px-5 py-2.5 text-sm font-semibold text-crema/70 transition-colors" aria-selected="false" aria-controls="cat-bebidas" id="t-bebidas" tabindex="-1"><span class="mr-1.5 text-[10px] opacity-60">05</span>Bebidas</button>
           </div>
         </div>
 
@@ -516,14 +512,7 @@
             <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Chicharrón con Yuca</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Chicharrón crocante con yuca frita y guacamole casero. Para compartir.</p></div>
             <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Pollo Asado</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Pollo entero o medio asado al horno con papa, mazorca y ensalada. Sabor de casa.</p></div>
           </div>
-          <!-- 05 Desayunos -->
-          <div role="tabpanel" id="cat-desayunos" aria-labelledby="t-desayunos" class="panel grid gap-x-14 gap-y-9 md:grid-cols-2" hidden>
-            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Calentado Santandereano</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Arroz, fríjoles, huevos y chicharrón. El desayuno que llena el alma.</p></div>
-            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Huevos al Gusto</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Fritos, revueltos o pericos con tomate y cebolla. Acompañados de arepa y jugo.</p></div>
-            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Changua</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Sopa de leche con huevo, cilantro y pan. El desayuno bogotano de toda la vida.</p></div>
-            <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Desayuno Campesino</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Arepa, queso, chorizo, huevo y chocolate caliente o tinto. Bien colombiano.</p></div>
-          </div>
-          <!-- 06 Bebidas -->
+          <!-- 05 Bebidas -->
           <div role="tabpanel" id="cat-bebidas" aria-labelledby="t-bebidas" class="panel grid gap-x-14 gap-y-9 md:grid-cols-2" hidden>
             <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Jugos Naturales</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">En agua o leche: lulo, maracuyá, mango, guanábana, mora y más según la temporada.</p></div>
             <div class="menu-item"><div class="flex items-baseline gap-3"><h3 class="font-display text-2xl">Limonada de Coco</h3><span class="menu-leader"></span><span class="text-xs font-semibold uppercase tracking-widest text-terracota-400">Consultar</span></div><p class="mt-2 text-sm leading-relaxed text-crema/55">Refrescante combinación de limón, leche de coco y hielo. La favorita del verano.</p></div>
